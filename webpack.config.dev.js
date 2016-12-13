@@ -54,10 +54,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          cacheDirectory: true
-        }
+        loaders: ['ng-annotate-loader', 'babel-loader']
       },
       {
         test: /\.(ttf|eot|svg|woff|woff2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -81,12 +78,6 @@ module.exports = {
     cssnano()
   ],
 
-  externals: {
-    'cheerio': 'window',
-    'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true,
-  },
-
   plugins: [
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -95,7 +86,7 @@ module.exports = {
       async: true
     }),
     new HtmlWebpackPlugin({
-      template: __dirname + '/src/index.tmpl.html',
+      template: __dirname + '/src/index.html',
       filename: __dirname + '/devbuild/index.html',
       inject: true
     }),
