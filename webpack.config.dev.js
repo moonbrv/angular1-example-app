@@ -28,7 +28,7 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: __dirname + '/devbuild',
+    contentBase: __dirname + '/src',
     colors: true,
     historyApiFallback: true
   },
@@ -47,6 +47,10 @@ module.exports = {
         test: /\.json$/,
         loader: 'json-loader'
       },
+      /* {
+        test: /\.html$/,
+        loader: 'resolve-url-loader!file-loader?name=[name].[ext]'
+      },*/
       {
         test: /\.scss$/,
         loader: 'style-loader!css-loader?sourceMap!postcss-loader!resolve-url-loader!sass-loader?sourceMap'
@@ -85,11 +89,11 @@ module.exports = {
       children: true,
       async: true
     }),
-    new HtmlWebpackPlugin({
+    /*new HtmlWebpackPlugin({
       template: __dirname + '/src/index.html',
       filename: __dirname + '/devbuild/index.html',
       inject: true
-    }),
+    }),*/
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
       __DEV__: true
