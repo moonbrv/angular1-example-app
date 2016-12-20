@@ -2,24 +2,67 @@
 <ul>
 
   <div class="table-responsive">
-    <table class="table table-condensed table-bordered table-hover">
+    <table class="table table-condensed table-bordered table-hover table-striped">
       <thead>
-       <tr>
-         <th>id</th>
-         <th>Name</th>
-         <th>Username</th>
-         <th>email</th>
-         <th>address</th>
-         <th>company</th>
+      <tr>
+        <th>
+          <a href="#" ng-click="tableCtrl.setOrder('id')">
+            id
+            <span ng-show="tableCtrl.setShow('id')" ng-class="tableCtrl.setIcon()"></span>
+          </a>
+        </th>
+        <th>
+          <a href="#" ng-click="tableCtrl.setOrder('name')">
+            Name
+            <span ng-show="tableCtrl.setShow('name')" ng-class="tableCtrl.setIcon()"></span>
+          </a>
+        </th>
+        <th>
+          <a href="#" ng-click="tableCtrl.setOrder('username')">
+            Username
+            <span ng-show="tableCtrl.setShow('username')" ng-class="tableCtrl.setIcon()"></span>
+          </a>
+        </th>
+        <th>
+          <a href="#" ng-click="tableCtrl.setOrder('email')">
+            Email
+            <span ng-show="tableCtrl.setShow('email')" ng-class="tableCtrl.setIcon()"></span>
+          </a>
+        </th>
+        <th>
+          <a href="#" ng-click="tableCtrl.setOrder('address.street')">
+            Address
+            <span ng-show="tableCtrl.setShow('address.street')" ng-class="tableCtrl.setIcon()"></span>
+          </a>
+        </th>
+        <th>
+          <a href="#" ng-click="tableCtrl.setOrder('company.name')">
+            Company
+            <span ng-show="tableCtrl.setShow('company.name')" ng-class="tableCtrl.setIcon()"></span>
+          </a>
+        </th>
        </tr>
       </thead>
-      <tr ng-repeat="user in tableCtrl.users">
+      <tr ng-repeat="user in tableCtrl.users | orderBy:tableCtrl.sortType:tableCtrl.sortReverse">
         <td>{{user.id}}</td>
         <td>{{user.name}}</td>
         <td>{{user.username}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.address.street}}</td>
-        <td>{{user.company.name}}</td>
+        <td>
+          <a href="mailto:{{user.email}}">
+            {{user.email}}
+          </a>
+        </td>
+        <td>
+          <address>
+            {{user.address.street}}<br>
+            {{user.address.suite}}<br>
+            {{user.address.city}}<br>
+            {{user.address.zipcode}}
+          </address>
+        </td>
+        <td>
+          {{user.company.name}}
+        </td>
       </tr>
     </table>
   </div>
