@@ -1,10 +1,13 @@
 // import angular from 'angular'
 
 export default class usersListService {
+  constructor($http) {
+    this.getUsers($http)
+  }
   getUsers($http) {
     return $http({
       method: 'GET',
       url: 'https://jsonplaceholder.typicode.com/users'
-    })
+    }).then(response => { this.users = response.data })
   }
 }
