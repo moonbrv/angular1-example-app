@@ -1,8 +1,11 @@
 export default class tableCtrl {
-  constructor(usersListService) {
-    this.users = usersListService.users
+  constructor(usersListService, $timeout) {
+    this.users = [...usersListService.users]
     this.sortType = 'name'
     this.sortReverse = false
+
+    // sync data between service and controller every 2 sec
+    $timeout(() => { this.users = [...usersListService.users] }, 2000)
   }
 
   setOrder(type) {
@@ -12,7 +15,6 @@ export default class tableCtrl {
       this.sortReverse = false
       this.sortType = type
     }
-    // console.log(`order by ${this.sortType} reverse is ${this.sortReverse}`)
   }
 
   setIcon() {
