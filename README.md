@@ -3,7 +3,6 @@ Simple app for managing users, created by Angular.js 1.x
 
 What is done by now:
   - fetching data from external api and store it in service
-  - sync data between controller and service
   - show users data in the table
   - deleting users
   - filter users by name, usersname and email

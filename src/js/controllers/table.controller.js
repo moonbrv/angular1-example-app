@@ -1,15 +1,22 @@
+/**
+ * this class is controller of home page
+ *
+ * @export
+ * @class tableCtrl
+ */
+
 export default class tableCtrl {
   constructor(usersListService, $timeout) {
-    this.users = [...usersListService.users]
+    this.srvc = usersListService
     this.sortType = 'name'
     this.sortReverse = false
-
-    // sync data between service and controller every 2 sec
-    $timeout(() => { this.users = [...usersListService.users] }, 2000)
-
-    this.deleteUser = usersListService.deleteUser
   }
 
+  /**
+   * function that decide order of sorting of column
+   * if it first click on column - order of sorting will not reverse and set new OrderBy parametr
+   * @param  {string} type
+   */
   setOrder(type) {
     if (this.sortType === type) {
       this.sortReverse = !this.sortReverse
@@ -19,10 +26,19 @@ export default class tableCtrl {
     }
   }
 
+  /**
+   * function decide wich class aply to element decided by sorting order
+   * @returns {string} class
+   */
   setIcon() {
     return !this.sortReverse ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-top'
   }
 
+  /**
+   * function decide visibility of sort icon in column
+   * @param  {string} type
+   * @returns {boolean}
+   */
   setShow(type) {
     return this.sortType === type
   }

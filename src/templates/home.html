@@ -66,7 +66,7 @@
         </th>
       </tr>
     </thead>
-    <tr ng-repeat="user in tableCtrl.users | orderBy:tableCtrl.sortType:tableCtrl.sortReverse | filter:search">
+    <tr ng-repeat="user in tableCtrl.srvc.users | orderBy:tableCtrl.sortType:tableCtrl.sortReverse | filter:search">
       <td>{{user.id}}</td>
       <td>{{user.name}}</td>
       <td>{{user.username}}</td>
@@ -87,9 +87,9 @@
         {{user.company.name}}
       </td>
       <td>
-        <a href="" class="btn btn-default" role="button">
-          <span class="glyphicon glyphicon-remove" ng-click="tableCtrl.deleteUser(user.id)"></span>
-        </a>
+        <button class="btn btn-default" ng-click="tableCtrl.srvc.deleteUser(user.id)">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
       </td>
     </tr>
   </table>

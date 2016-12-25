@@ -1,4 +1,9 @@
-// import angular from 'angular'
+/**
+ * Service class that fetch data(array of users objects) from url and store it
+ *
+ * @export
+ * @class usersListService
+ */
 
 export default class usersListService {
   constructor($http) {
@@ -6,6 +11,10 @@ export default class usersListService {
     this.getUsers($http)
   }
 
+  /**
+   * get users array in json from url
+   * @param  {object} $http
+   */
   getUsers($http) {
     return $http({
       method: 'GET',
@@ -13,6 +22,10 @@ export default class usersListService {
     }).then(response => { this.users = [...response.data] })
   }
 
+  /**
+   * delete user obj from array
+   * @param  {string} id
+   */
   deleteUser(id) {
     this.users = this.users.filter(user => user.id !== id)
   }
