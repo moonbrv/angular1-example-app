@@ -61,6 +61,9 @@
             <span ng-show="tableCtrl.setShow('company.name')" ng-class="tableCtrl.setIcon()"></span>
           </a>
         </th>
+        <th>
+          Delete
+        </th>
       </tr>
     </thead>
     <tr ng-repeat="user in tableCtrl.users | orderBy:tableCtrl.sortType:tableCtrl.sortReverse | filter:search">
@@ -83,6 +86,11 @@
       <td>
         {{user.company.name}}
       </td>
+      <td>
+        <a href="" class="btn btn-default" role="button">
+          <span class="glyphicon glyphicon-remove" ng-click="tableCtrl.deleteUser(user.id)"></span>
+        </a>
+      </td>
     </tr>
   </table>
 </div>
@@ -101,7 +109,18 @@
         <h4 class="modal-title" id="add-new-user-label">Add new user</h4>
       </div>
       <div class="modal-body">
-        There will be a form to add users
+
+        <form action="" id="user-add" class="add-form form-horizontal">
+
+          <div class="form-group">
+            <label for="addInputName" class="col-sm-2 col-md-1 control-label">Name</label>
+            <div class="col-sm-10 col-md-11">
+              <input type="text" class="form-control" id="addInputName" placeholder="Name" ng-model="adduser.name" name="Name">
+            </div>
+          </div>
+
+        </form>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

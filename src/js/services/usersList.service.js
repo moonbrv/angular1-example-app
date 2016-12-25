@@ -5,10 +5,15 @@ export default class usersListService {
     this.users = []
     this.getUsers($http)
   }
+
   getUsers($http) {
     return $http({
       method: 'GET',
       url: 'https://jsonplaceholder.typicode.com/users'
     }).then(response => { this.users = [...response.data] })
+  }
+
+  deleteUser(id) {
+    this.users = this.users.filter(user => user.id !== id)
   }
 }

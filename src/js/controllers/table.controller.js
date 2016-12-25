@@ -6,6 +6,8 @@ export default class tableCtrl {
 
     // sync data between service and controller every 2 sec
     $timeout(() => { this.users = [...usersListService.users] }, 2000)
+
+    this.deleteUser = usersListService.deleteUser
   }
 
   setOrder(type) {
