@@ -13,6 +13,7 @@ export default class usersListService {
 
   /**
    * get users array in json from url
+   *
    * @param  {object} $http
    */
   getUsers($http) {
@@ -24,6 +25,7 @@ export default class usersListService {
 
   /**
    * delete user obj from array
+   *
    * @param  {string} id
    */
   deleteUser(id) {
@@ -32,6 +34,7 @@ export default class usersListService {
 
   /**
    * function create Id to new User
+   *
    * @returns  {string}
    */
   getId() {
@@ -46,6 +49,6 @@ export default class usersListService {
   addUser(obj) {
     console.log('add to table')
     console.log(obj)
-    this.users = [...this.users, Object.assign({}, obj)]
+    this.users = [...this.users, Object.assign({}, {id: this.getId()}, obj)]
   }
 }
