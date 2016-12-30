@@ -1,9 +1,10 @@
 'use strict'
 
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const cssnano = require('cssnano');
-const autoprefixer = require('autoprefixer');
+const webpack = require('webpack')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
+const cssnano = require('cssnano')
+const autoprefixer = require('autoprefixer')
+const path = require('path')
 
 module.exports = {
   target: 'web',
@@ -17,18 +18,18 @@ module.exports = {
 
   entry:
   {
-    main: __dirname + '/src/js/index'
+    main: path.join(__dirname, '/src/js/index')
   },
 
   output: {
-    path: __dirname + '/devbuild',
+    path: path.join(__dirname, '/devbuild'),
     publicPath: '/',
     filename: '[name].bundle.js',
     chunkFilename: '[id].bundle.js'
   },
 
   devServer: {
-    contentBase: __dirname + '/src',
+    contentBase: path.join(__dirname, '/src'),
     colors: true,
     historyApiFallback: true
   },
@@ -47,10 +48,10 @@ module.exports = {
         test: /\.json$/,
         loader: 'json-loader'
       },
-      /* {
-        test: /\.html$/,
-        loader: 'resolve-url-loader!file-loader?name=[name].[ext]'
-      },*/
+      // {
+      //   test: /\.html$/,
+      //   loader: 'resolve-url-loader!file-loader?name=[name].[ext]'
+      // },
       {
         test: /\.scss$/,
         loader: 'style-loader!css-loader?sourceMap!postcss-loader!resolve-url-loader!sass-loader?sourceMap'
@@ -89,15 +90,15 @@ module.exports = {
       children: true,
       async: true
     }),
-    /*new HtmlWebpackPlugin({
-      template: __dirname + '/src/index.html',
-      filename: __dirname + '/devbuild/index.html',
-      inject: true
-    }),*/
+    // new HtmlWebpackPlugin({
+    //   template: __dirname + '/src/index.html',
+    //   filename: __dirname + '/devbuild/index.html',
+    //   inject: true
+    // }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
       __DEV__: true
-    }),
+    })
   ],
   node: {
     fs: 'empty',
