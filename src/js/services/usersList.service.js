@@ -29,4 +29,23 @@ export default class usersListService {
   deleteUser(id) {
     this.users = this.users.filter(user => user.id !== id)
   }
+
+  /**
+   * function create Id to new User
+   * @returns  {string}
+   */
+  getId() {
+    return Math.max.apply(Math, this.users.map(x => x.id)) + 1
+  }
+
+  /**
+   * addUser - function to add new user to array, immutable way with spread operator
+   *
+   * @param  {object} obj New user obect
+   */
+  addUser(obj) {
+    console.log('add to table')
+    console.log(obj)
+    this.users = [...this.users, Object.assign({}, obj)]
+  }
 }

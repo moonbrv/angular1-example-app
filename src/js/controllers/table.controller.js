@@ -28,7 +28,7 @@ export default class tableCtrl {
 
   /**
    * function decide wich class aply to element decided by sorting order
-   * @returns {string} class
+   * @returns {string} class for display direction of sorting
    */
   setIcon() {
     return !this.sortReverse ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-top'
