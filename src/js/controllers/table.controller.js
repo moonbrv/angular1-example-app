@@ -15,7 +15,7 @@ export default class tableCtrl {
   /**
    * function that decide order of sorting of column
    * if it first click on column - order of sorting will not reverse and set new OrderBy parametr
-   * @param  {string} type
+   * @param  {string} typeho
    */
   setOrder(type) {
     if (this.sortType === type) {
