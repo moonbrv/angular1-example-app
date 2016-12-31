@@ -1,3 +1,7 @@
 {
-  "extends": "standart"
+  "extends": "standart",
+  "plugins": [
+        "html",
+        "angular"
+    ]
 }
