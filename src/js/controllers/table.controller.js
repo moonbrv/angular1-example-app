@@ -6,7 +6,7 @@
  */
 
 export default class tableCtrl {
-  constructor(usersListService, $timeout) {
+  constructor(usersListService) {
     this.srvc = usersListService
     this.sortType = 'name'
     this.sortReverse = false
