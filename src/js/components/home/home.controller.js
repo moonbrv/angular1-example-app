@@ -1,11 +1,11 @@
 /**
- * this class is controller of home page
+ * this class is controller of <home> component
  *
  * @export
- * @class tableCtrl
+ * @class homeCtrl
  */
 
-export default class tableCtrl {
+export default class homeCtrl {
   constructor(usersListService) {
     this.srvc = usersListService
     this.sortType = 'name'
@@ -18,6 +18,7 @@ export default class tableCtrl {
    * @param  {string} typeho
    */
   setOrder(type) {
+    console.log(type)
     if (this.sortType === type) {
       this.sortReverse = !this.sortReverse
     } else {

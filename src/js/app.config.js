@@ -7,16 +7,10 @@ export default function routing($stateProvider, $urlRouterProvider, $locationPro
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: './../templates/home.html',
-      controller: 'tableCtrl',
-      controllerAs: 'tableCtrl'
+      component: 'home'
     })
-    .state('aboutApp', {
-      url: '/about_app',
-      templateUrl: './../templates/aboutApp.html'
-    })
-    .state('aboutAuthor', {
-      url: '/about_author',
-      templateUrl: './../templates/aboutAuthor.html'
+    .state('about', {
+      url: '/about',
+      component: 'about'
     })
 }

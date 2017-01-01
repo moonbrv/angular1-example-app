@@ -9,7 +9,7 @@ const path = require('path')
 module.exports = {
   target: 'web',
   debug: true,
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   noInfo: true,
 
   resolve: {
@@ -47,6 +47,10 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json-loader'
+      },
+      {
+        test: /\.html$/,
+        loader: 'raw-loader'
       },
       // {
       //   test: /\.html$/,

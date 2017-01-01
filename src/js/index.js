@@ -1,10 +1,16 @@
 import $ from 'jquery'
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
+
+// import routing config
 import routing from './app.config.js'
 
+// import service
 import usersListService from './services/usersList.service.js'
-import tableCtrl from './controllers/table.controller.js'
+
+// import components
+import home from './components/home/home.component.js'
+import about from './components/about/about.component.js'
 
 // add jquery
 window.jQuery = $
@@ -19,4 +25,5 @@ require('./../scss/style.scss')
 angular.module('app', [uiRouter])
   .config(routing)
   .service('usersListService', usersListService)
-  .controller('tableCtrl', tableCtrl)
+  .component('home', home)
+  .component('about', about)

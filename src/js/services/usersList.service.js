@@ -26,7 +26,7 @@ export default class usersListService {
   /**
    * delete user obj from array
    *
-   * @param  {string} id
+   * @param  {Number} id
    */
   deleteUser(id) {
     this.users = this.users.filter(user => user.id !== id)
