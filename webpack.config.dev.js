@@ -1,15 +1,15 @@
 'use strict'
 
 const webpack = require('webpack')
-// const HtmlWebpackPlugin = require('html-webpack-plugin')
-const cssnano = require('cssnano')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const cssnano = require('cssnano')
 const autoprefixer = require('autoprefixer')
 const path = require('path')
 
 module.exports = {
   target: 'web',
   debug: true,
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
   noInfo: true,
 
   resolve: {
@@ -30,8 +30,12 @@ module.exports = {
 
   devServer: {
     contentBase: path.join(__dirname, '/src'),
-    colors: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    stats: {
+      colors: true,
+      chunks: false,
+      reasons: true
+    }
   },
 
   module: {
@@ -71,7 +75,7 @@ module.exports = {
         loader: 'file-loader?name=[1]&regExp=node_modules/bootstrap-sass/assets/(.*)'
       },
       {
-        test: /\.(jpg|png|svg)$/,
+        test: /\.(jpg|png|svg|ico)$/,
         include: /src/,
         loader: 'file-loader?name=[1]&regExp=src/(.*)'
       }
@@ -83,30 +87,23 @@ module.exports = {
       browsers: [
       'last 2 versions'
       ]
-    }),
-    cssnano()
+    })
   ],
 
   plugins: [
-    new webpack.NoErrorsPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      children: true,
-      async: true
-    }),
-    // new HtmlWebpackPlugin({
-    //   template: __dirname + '/src/index.html',
-    //   filename: __dirname + '/devbuild/index.html',
-    //   inject: true
+    // new webpack.NoErrorsPlugin(),
+    // new webpack.optimize.OccurenceOrderPlugin(),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   children: true,
+    //   async: true
     // }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, '/src/index.html'),
+      hash: true
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
       __DEV__: true
     })
-  ],
-  node: {
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty'
-  }
+  ]
 }

@@ -5,10 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-build": "npm run pre-dev && NODE_ENV=development webpack --config ./webpack.config.dev.js",
-    "dev-serv": "webpack-dev-server --config ./webpack.config.dev.js --hot --inline",
-    "pre-dev": "rimraf ./devbuild && mkdir devbuild",
-    "dev": "npm run dev-build && npm run dev-serv"
+    "dev": "webpack-dev-server --config ./webpack.config.dev.js --hot --inline"
   },
   "repository": {
     "type": "git",
