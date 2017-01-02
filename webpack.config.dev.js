@@ -69,10 +69,15 @@ module.exports = {
         exclude: /node_modules/,
         loaders: ['ng-annotate-loader', 'babel-loader']
       },
+      // {
+      //   test: /\.(ttf|eot|svg|woff|woff2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      //   include:/node_modules\/bootstrap-sass\/assets/,
+      //   loader: 'file-loader?name=[1]&regExp=node_modules/bootstrap-sass/assets/(.*)'
+      // },
       {
         test: /\.(ttf|eot|svg|woff|woff2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         include:/node_modules\/bootstrap-sass\/assets/,
-        loader: 'file-loader?name=[1]&regExp=node_modules/bootstrap-sass/assets/(.*)'
+        loader: 'url-loader?limit=120000'
       },
       {
         test: /\.(jpg|png|svg|ico)$/,
