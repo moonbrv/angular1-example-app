@@ -11,6 +11,7 @@ import usersListService from './services/usersList.service.js'
 // import components
 import home from './components/home/home.component.js'
 import about from './components/about/about.component.js'
+import addUser from './components/add-user/add-user.component.js'
 
 // add jquery
 window.jQuery = $
@@ -27,3 +28,4 @@ angular.module('app', [uiRouter])
   .service('usersListService', usersListService)
   .component('home', home)
   .component('about', about)
+  .component('addUser', addUser)
