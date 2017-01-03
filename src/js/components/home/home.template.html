@@ -86,10 +86,10 @@
       <td>
         {{user.company.name}}
       </td>
-      <td>
-        <button class="btn btn-default" ng-click="$ctrl.srvc.deleteUser(user.id)">
-          <span class="glyphicon glyphicon-remove"></span>
-        </button>
+      <td class="text-center">
+        <a ng-click="$ctrl.srvc.deleteUser(user.id)">
+          <span class="glyphicon glyphicon-remove delete-user"></span>
+        </a>
       </td>
     </tr>
   </table>
