@@ -1,15 +1,16 @@
 <form action="" id="user-add" class="add-form form-horizontal" name="addUserForm" novalidate ng-submit="$ctrl.addUser($event, user)">
-  <h3>Add new User</h3>
-  <div class="">
-    {{$ctrl.errors | json}}
-    {{$ctrl.warnings | json}}
+  <h3 class="text-center">Add new User</h3>
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-4">
+      <p><span class="required">*</span> - required field</p>
+    </div>
   </div>
   <div class="form-group"
   ng-class="{
     'has-warning': addUserForm.name.$dirty && $ctrl.warnings.name.length,
     'has-success': addUserForm.name.$valid && !$ctrl.errors.name.length && !$ctrl.warnings.name.length
     }">
-    <label for="addInputName" class="col-sm-2 control-label">Name</label>
+    <label for="addInputName" class="col-sm-2 control-label">Name <span class="required">*</span></label>
     <div class="col-sm-6 col-md-4">
       <input type="text" class="form-control" id="addInputName" placeholder="Name" ng-model="user.name" name="name" ng-keyup="$ctrl.haveMinimalLength('name', user, 3, true)" required>
       <div class="alert alert-warning" role="alert" ng-show="$ctrl.warnings.name">
@@ -24,7 +25,7 @@
     'has-success': addUserForm.username.$valid && !$ctrl.errors.username.length && !$ctrl.warnings.username.length
     }"
   >
-    <label for="addInputUserame" class="col-sm-2 control-label">Username</label>
+    <label for="addInputUserame" class="col-sm-2 control-label">Username <span class="required">*</span></label>
     <div class="col-sm-6 col-md-4">
       <input type="text" class="form-control" id="addInputUserame" placeholder="Username" ng-model="user.username" name="username" ng-keyup="[$ctrl.uniqueProp('username', user), $ctrl.haveMinimalLength('username', user, 3, true)]" required>
       <div class="alert alert-danger" role="alert" ng-show="$ctrl.errors.username">
@@ -35,10 +36,18 @@
       </div>
     </div>
   </div>
-  <div class="form-group">
-    <label for="addInputEmail" class="col-sm-2 control-label">Email</label>
+  <div class="form-group"
+  ng-class="{
+    'has-error': addUserForm.email.$dirty && $ctrl.errors.email.length || addUserForm.email.$dirty && addUserForm.email.$invalid,
+    'has-success': addUserForm.email.$valid && !$ctrl.errors.email.length
+    }"
+  >
+    <label for="addInputEmail" class="col-sm-2 control-label">Email <span class="required">*</span></label>
     <div class="col-sm-6 col-md-4">
-      <input type="email" class="form-control" id="addInputEmail" placeholder="Email" ng-model="user.email" name="email" required>
+      <input type="email" class="form-control" id="addInputEmail" placeholder="Email" ng-model="user.email" name="email" ng-keyup="$ctrl.uniqueProp('email', user)" required>
+      <div class="alert alert-danger" role="alert" ng-show="$ctrl.errors.email">
+        <span class="glyphicon glyphicon-alert"></span>{{$ctrl.errors.email}}
+      </div>
     </div>
   </div>
   <div class="form-group">
