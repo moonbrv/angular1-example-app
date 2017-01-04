@@ -1,20 +1,37 @@
 <form action="" id="user-add" class="add-form form-horizontal" name="addUserForm" novalidate ng-submit="$ctrl.addUser($event, user)">
+  <h3>Add new User</h3>
+  <div class="">
+    {{$ctrl.errors | json}}
+    {{$ctrl.warnings | json}}
+  </div>
   <div class="form-group">
     <label for="addInputName" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-6 col-md-4">
-      <input type="text" class="form-control" id="addInputName" placeholder="Name" ng-model="user.name" name="name">
+      <input type="text" class="form-control" id="addInputName" placeholder="Name" ng-model="user.name" name="name" required>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group"
+  ng-class="{
+    'has-error': addUserForm.username.$dirty && $ctrl.errors.username.length,
+    'has-warning': addUserForm.username.$dirty && $ctrl.warnings.username.length,
+    'has-success': addUserForm.username.$valid && !$ctrl.errors.username.length && !$ctrl.warnings.username.length
+    }"
+  >
     <label for="addInputUserame" class="col-sm-2 control-label">Username</label>
     <div class="col-sm-6 col-md-4">
-      <input type="text" class="form-control" id="addInputUserame" placeholder="Username" ng-model="user.username" name="username">
+      <input type="text" class="form-control" id="addInputUserame" placeholder="Username" ng-model="user.username" name="username" ng-keyup="[$ctrl.uniqueProp('username', user), $ctrl.haveMinimalLength('username', user, 3)]" required>
+      <div class="alert alert-danger" role="alert" ng-show="$ctrl.errors.username">
+        <span class="glyphicon glyphicon-alert"></span>{{$ctrl.errors.username}}
+      </div>
+      <div class="alert alert-warning" role="alert" ng-show="$ctrl.warnings.username">
+        <span class="glyphicon glyphicon-alert"></span>{{$ctrl.warnings.username}}
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="addInputEmail" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-6 col-md-4">
-      <input type="email" class="form-control" id="addInputEmail" placeholder="Email" ng-model="user.email" name="email">
+      <input type="email" class="form-control" id="addInputEmail" placeholder="Email" ng-model="user.email" name="email" required>
     </div>
   </div>
   <div class="form-group">
@@ -59,5 +76,5 @@
       <input type="text" class="form-control" id="addInputCompany" placeholder="Company name" ng-model="user.company.name" name="company">
     </div>
   </div>
-  <button type="submit" class="btn btn-primary text-uppercase col-sm-offset-2">Add user</button>
+  <button type="submit" class="btn btn-primary text-uppercase col-sm-offset-2" ng-disabled="addUserForm.$invalid && !$ctrl.haveNoErrors()">Add user</button>
 </form>
