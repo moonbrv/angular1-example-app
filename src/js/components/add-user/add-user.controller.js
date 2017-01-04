@@ -21,7 +21,10 @@ export default class addUser {
    * @param  {number} minSymbols
    * @param  {boolean} important
    */
-  haveMinimalLength(prop, userObj, minSymbols = 3, important = false) {
+  haveMinimalLength(prop, userObj = {}, minSymbols = 3, important = false) {
+    if (!userObj[prop]) {
+      userObj[prop] = ''
+    }
     const length = userObj[prop].trim() ? userObj[prop].trim().length : 0
     if (important) {
       this.warnings[prop] = length < minSymbols ? `You must enter atleast ${minSymbols} symbols` : ''

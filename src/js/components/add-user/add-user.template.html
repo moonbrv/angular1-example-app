@@ -23,8 +23,7 @@
     'has-error': addUserForm.username.$dirty && $ctrl.errors.username.length,
     'has-warning': addUserForm.username.$dirty && $ctrl.warnings.username.length,
     'has-success': addUserForm.username.$valid && !$ctrl.errors.username.length && !$ctrl.warnings.username.length
-    }"
-  >
+    }">
     <label for="addInputUserame" class="col-sm-2 control-label">Username <span class="required">*</span></label>
     <div class="col-sm-6 col-md-4">
       <input type="text" class="form-control" id="addInputUserame" placeholder="Username" ng-model="user.username" name="username" ng-keyup="[$ctrl.uniqueProp('username', user), $ctrl.haveMinimalLength('username', user, 3, true)]" required>
@@ -40,8 +39,7 @@
   ng-class="{
     'has-error': addUserForm.email.$dirty && $ctrl.errors.email.length || addUserForm.email.$dirty && addUserForm.email.$invalid,
     'has-success': addUserForm.email.$valid && !$ctrl.errors.email.length
-    }"
-  >
+    }">
     <label for="addInputEmail" class="col-sm-2 control-label">Email <span class="required">*</span></label>
     <div class="col-sm-6 col-md-4">
       <input type="email" class="form-control" id="addInputEmail" placeholder="Email" ng-model="user.email" name="email" ng-keyup="$ctrl.uniqueProp('email', user)" required>
@@ -92,5 +90,5 @@
       <input type="text" class="form-control" id="addInputCompany" placeholder="Company name" ng-model="user.company.name" name="company">
     </div>
   </div>
-  <button type="submit" class="btn btn-primary text-uppercase col-sm-offset-2" ng-disabled="addUserForm.$invalid && !$ctrl.haveNoErrors()">Add user</button>
+  <button type="submit" class="btn btn-primary text-uppercase col-sm-offset-2" ng-disabled="addUserForm.$invalid && !$ctrl.haveNoErrors() &&addUserForm.$pristine">Add user</button>
 </form>
