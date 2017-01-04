@@ -4,10 +4,17 @@
     {{$ctrl.errors | json}}
     {{$ctrl.warnings | json}}
   </div>
-  <div class="form-group">
+  <div class="form-group"
+  ng-class="{
+    'has-warning': addUserForm.name.$dirty && $ctrl.warnings.name.length,
+    'has-success': addUserForm.name.$valid && !$ctrl.errors.name.length && !$ctrl.warnings.name.length
+    }">
     <label for="addInputName" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-6 col-md-4">
-      <input type="text" class="form-control" id="addInputName" placeholder="Name" ng-model="user.name" name="name" required>
+      <input type="text" class="form-control" id="addInputName" placeholder="Name" ng-model="user.name" name="name" ng-keyup="$ctrl.haveMinimalLength('name', user, 3, true)" required>
+      <div class="alert alert-warning" role="alert" ng-show="$ctrl.warnings.name">
+        <span class="glyphicon glyphicon-alert"></span>{{$ctrl.warnings.name}}
+      </div>
     </div>
   </div>
   <div class="form-group"
@@ -19,7 +26,7 @@
   >
     <label for="addInputUserame" class="col-sm-2 control-label">Username</label>
     <div class="col-sm-6 col-md-4">
-      <input type="text" class="form-control" id="addInputUserame" placeholder="Username" ng-model="user.username" name="username" ng-keyup="[$ctrl.uniqueProp('username', user), $ctrl.haveMinimalLength('username', user, 3)]" required>
+      <input type="text" class="form-control" id="addInputUserame" placeholder="Username" ng-model="user.username" name="username" ng-keyup="[$ctrl.uniqueProp('username', user), $ctrl.haveMinimalLength('username', user, 3, true)]" required>
       <div class="alert alert-danger" role="alert" ng-show="$ctrl.errors.username">
         <span class="glyphicon glyphicon-alert"></span>{{$ctrl.errors.username}}
       </div>
