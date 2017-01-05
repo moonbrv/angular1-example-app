@@ -18,7 +18,7 @@ module.exports = {
 
   entry:
   {
-    main: path.join(__dirname, '/src/js/index')
+    main: path.join(__dirname, '/src/js/index.js')
   },
 
   output: {
@@ -106,8 +106,8 @@ module.exports = {
       template: path.join(__dirname, '/src/index.html')
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-      __DEV__: true
+      __DEV__: process.env.NODE_ENV === 'development',
+      __TEST__: process.env.NODE_ENV === 'test'
     })
   ]
 }

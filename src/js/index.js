@@ -22,6 +22,11 @@ require('bootstrap-sass/assets/javascripts/bootstrap.js')
 // add stylesheet
 require('./../scss/style.scss')
 
+// add angular-mocks in development to tests
+if (__TEST__) {
+  require('angular-mocks/angular-mocks.js')
+}
+
 // create angular module
 angular.module('app', [uiRouter])
   .config(routing)
