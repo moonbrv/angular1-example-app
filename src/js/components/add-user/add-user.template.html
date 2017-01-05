@@ -90,5 +90,5 @@
       <input type="text" class="form-control" id="addInputCompany" placeholder="Company name" ng-model="user.company.name" name="company">
     </div>
   </div>
-  <button type="submit" class="btn btn-primary text-uppercase col-sm-offset-2" ng-disabled="addUserForm.$invalid && !$ctrl.haveNoErrors() &&addUserForm.$pristine">Add user</button>
+  <button type="submit" class="btn btn-primary text-uppercase col-sm-offset-2" ng-disabled="addUserForm.$invalid || !$ctrl.haveNoErrors() ||addUserForm.$pristine">Add user</button>
 </form>
