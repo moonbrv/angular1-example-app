@@ -9,9 +9,9 @@ import routing from './app.config.js'
 import usersListService from './services/usersList.service.js'
 
 // import components
-import home from './components/home/home.component.js'
-import about from './components/about/about.component.js'
-import addUser from './components/add-user/add-user.component.js'
+import home from './components/home/'
+import about from './components/about/'
+import addUser from './components/add-user/'
 
 // add jquery
 window.jQuery = $
@@ -21,11 +21,6 @@ require('bootstrap-sass/assets/javascripts/bootstrap.js')
 
 // add stylesheet
 require('./../scss/style.scss')
-
-// add angular-mocks in development to tests
-if (__TEST__) {
-  require('angular-mocks/angular-mocks.js')
-}
 
 // create angular module
 angular.module('app', [uiRouter])

@@ -52,10 +52,3 @@ export default class usersListService {
     this.users = [...this.users, Object.assign({}, {id: this.getId()}, obj)]
   }
 }
-
-/**
- * Running tests
- */
-if (__TEST__) {
-  require('./userList.service.test.js')
-}

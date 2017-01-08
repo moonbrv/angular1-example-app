@@ -1,9 +1,14 @@
 const webpackConfig = require('./webpack.config.dev.js')
+
+// webpack setup for tests
 webpackConfig.module.preLoaders = []
 
 // webpack preprocessor setup
 const preprocessors = {}
+const testFiles = './src/**/*.test.js'
 preprocessors[webpackConfig.entry.main] = ['webpack']
+preprocessors[testFiles] = ['babel']
+
 
 module.exports = function(config) {
   config.set({
@@ -17,7 +22,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      webpackConfig.entry.main
+      webpackConfig.entry.main,
+      './node_modules/angular-mocks/angular-mocks.js',
+      testFiles
     ],
 
     webpack: webpackConfig,
@@ -67,7 +74,8 @@ module.exports = function(config) {
     plugins: [
       require('karma-webpack'),
       'karma-jasmine',
-      'karma-phantomjs-launcher'
+      'karma-phantomjs-launcher',
+      'karma-babel-preprocessor'
     ]
   })
 }
