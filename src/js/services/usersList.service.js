@@ -47,8 +47,6 @@ export default class usersListService {
    * @param  {object} obj New user obect
    */
   addUser(obj) {
-    console.log('add to table')
-    console.log(obj)
     this.users = [...this.users, Object.assign({}, {id: this.getId()}, obj)]
   }
 }
