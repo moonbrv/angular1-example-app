@@ -18,7 +18,6 @@ export default class homeCtrl {
    * @param  {string} typeho
    */
   setOrder(type) {
-    console.log(type)
     if (this.sortType === type) {
       this.sortReverse = !this.sortReverse
     } else {
