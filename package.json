@@ -6,7 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=test karma start",
     "dev": "NODE_ENV=development webpack-dev-server --config ./webpack.config.dev.js --hot --inline",
-    "lint": "eslint *"
+    "start": "run-p dev test"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,7 @@
     "karma-webpack": "^1.8.1",
     "ng-annotate-loader": "^0.2.0",
     "node-sass": "^4.0.0",
+    "npm-run-all": "^4.0.0",
     "postcss": "^5.2.6",
     "postcss-loader": "^1.2.1",
     "purifycss-webpack-plugin": "^2.0.3",
