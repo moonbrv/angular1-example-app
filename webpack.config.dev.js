@@ -2,7 +2,7 @@
 
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const cssnano = require('cssnano')
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const autoprefixer = require('autoprefixer')
 const path = require('path')
 
@@ -56,10 +56,6 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader'
       },
-      // {
-      //   test: /\.html$/,
-      //   loader: 'resolve-url-loader!file-loader?name=[name].[ext]'
-      // },
       {
         test: /\.scss$/,
         loader: 'style-loader!css-loader?sourceMap!postcss-loader!resolve-url-loader!sass-loader?sourceMap'
@@ -69,11 +65,6 @@ module.exports = {
         exclude: /node_modules/,
         loaders: ['ng-annotate-loader', 'babel-loader']
       },
-      // {
-      //   test: /\.(ttf|eot|svg|woff|woff2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      //   include:/node_modules\/bootstrap-sass\/assets/,
-      //   loader: 'file-loader?name=[1]&regExp=node_modules/bootstrap-sass/assets/(.*)'
-      // },
       {
         test: /\.(ttf|eot|svg|woff|woff2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         include:/node_modules\/bootstrap-sass\/assets/,
@@ -96,12 +87,10 @@ module.exports = {
   ],
 
   plugins: [
-    // new webpack.NoErrorsPlugin(),
-    // new webpack.optimize.OccurenceOrderPlugin(),
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   children: true,
-    //   async: true
-    // }),
+    new StyleLintPlugin({
+      syntax: 'scss',
+      files: './src/**/*.scss'
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '/src/index.html')
     }),
