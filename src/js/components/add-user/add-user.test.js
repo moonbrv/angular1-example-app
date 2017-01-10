@@ -27,6 +27,7 @@ describe('<add-user> component', () => {
     'username': 'bret',
     'email': 'kev@bumbam.org'
   }
+  // errorUser name have only 2 characters (use this obj to create warnings)
   const errorUser = {
     'id': 5,
     'name': 'py',
@@ -35,7 +36,7 @@ describe('<add-user> component', () => {
   }
 
   beforeEach(module('app'))
-  let scope, element, ctrl, $http, $httpBackend, usersListService
+  let scope, element, ctrl, $httpBackend
 
   function findIn(element, selector) {
     return angular.element(element[0].querySelector(selector))
@@ -43,14 +44,14 @@ describe('<add-user> component', () => {
 
   // inject service because ctrl use it
   beforeEach(inject((_$http_, _usersListService_, _$httpBackend_) => {
-    $http = _$http_
+    // $http = _$http_
     $httpBackend = _$httpBackend_
 
     $httpBackend
       .when('GET', 'https://jsonplaceholder.typicode.com/users')
       .respond(responseData)
 
-    usersListService = _usersListService_
+    // usersListService = _usersListService_
 
     $httpBackend.flush()
   }))
@@ -76,29 +77,49 @@ describe('<add-user> component', () => {
   // --- TESTING CONTROLLER ---
   describe('testing controller', () => {
 
-    it('Must have no warnings about minimal username length of good userObj', () => {
+    it('Must have no warnings about minimal username length of userObj with valid data', () => {
       ctrl.haveMinimalLength('username', rightUser)
       expect(ctrl.warnings.username).toBe('')
     })
 
-    it('Must have warnings about minimal name length of bad userObj, of not important field', () => {
+    it('Must have warnings about minimal name length of userObj with invalid data, of not important field', () => {
       ctrl.haveMinimalLength('name', errorUser)
       expect(ctrl.warnings.name).toBe(`Minimal length 3 symbols`)
     })
 
-    it('Must have warnings about minimal name length of bad userObj, of important field', () => {
+    it('Must have warnings about minimal name length of userObj with ivalid data, of important field', () => {
       ctrl.haveMinimalLength('name', errorUser, 3, true)
       expect(ctrl.warnings.name).toBe(`You must enter atleast 3 symbols`)
     })
 
-    it('Should have no error about unique username in good user object', () => {
+    it('Should have no error about unique username in userObj with valid data', () => {
       ctrl.uniqueProp('username', rightUser)
       expect(ctrl.errors.username).toBe('')
     })
 
-    it('Should have error about unique username in bad user object', () => {
+    it('Should have error about unique username in userObj with invalid data', () => {
       ctrl.uniqueProp('username', wrongUser)
       expect(ctrl.errors.username).toBe(' User with this username already exist')
+    })
+
+    it('Should have no error or warning with new userObj, that have valid data', () => {
+      ctrl.uniqueProp('name', rightUser)
+      ctrl.uniqueProp('username', rightUser)
+      ctrl.uniqueProp('email', rightUser)
+      ctrl.haveMinimalLength('name', rightUser)
+      ctrl.haveMinimalLength('username', rightUser)
+      ctrl.haveMinimalLength('email', rightUser)
+      expect(ctrl.haveNoErrors()).toBe(true)
+    })
+
+    it('Should have error with new userObj, that have non unique username', () => {
+      ctrl.uniqueProp('username', wrongUser)
+      expect(ctrl.haveNoErrors()).toBe(false)
+    })
+
+    it('Should have warning with new userObj, that have short name', () => {
+      ctrl.uniqueProp('haveMinimalLength', errorUser)
+      expect(ctrl.haveNoErrors()).toBe(false)
     })
 
   })
