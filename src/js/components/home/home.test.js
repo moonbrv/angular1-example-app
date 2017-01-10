@@ -1,28 +1,27 @@
 describe('<home> component', () => {
   let responseData = [
       {
-        "id": 1,
-        "name": "Leanne Graham",
-        "username": "Bret",
-        "email": "Sincere@april.biz"
+        'id': 1,
+        'name': 'Leanne Graham',
+        'username': 'Bret',
+        'email': 'Sincere@april.biz'
       },
       {
-        "id": 2,
-        "name": "Ervin Howell",
-        "username": "Antonette",
-        "email": "Shanna@melissa.tv"
+        'id': 2,
+        'name': 'Ervin Howell',
+        'username': 'Antonette',
+        'email': 'Shanna@melissa.tv'
       }
     ]
   beforeEach(module('app'))
-  let scope, element, ctrl, $http, $httpBackend, usersListService
+  let scope, element, ctrl, $httpBackend, usersListService
 
   function findIn(element, selector) {
     return angular.element(element[0].querySelector(selector));
   }
 
   // inject service because ctrl use it
-  beforeEach(inject((_$http_, _usersListService_, _$httpBackend_) => {
-    $http = _$http_
+  beforeEach(inject((_usersListService_, _$httpBackend_) => {
     $httpBackend = _$httpBackend_
 
     $httpBackend
