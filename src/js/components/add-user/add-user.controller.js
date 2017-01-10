@@ -72,6 +72,6 @@ export default class addUser {
     if (this.haveNoErrors()) {
       this.srvc.addUser(userObj)
     }
-    $document.getElementById('user-add').reset()
+    document.getElementById('user-add').reset()
   }
 }
