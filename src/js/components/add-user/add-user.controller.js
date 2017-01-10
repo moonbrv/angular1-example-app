@@ -6,7 +6,8 @@
  */
 
 export default class addUser {
-  constructor(usersListService) {
+  constructor(usersListService, $element) {
+    this.elem = $element
     this.srvc = usersListService
     this.errors = {}
     this.warnings = {}
@@ -72,6 +73,6 @@ export default class addUser {
     if (this.haveNoErrors()) {
       this.srvc.addUser(userObj)
     }
-    document.getElementById('user-add').reset()
+    this.elem.find('form')[0].reset()
   }
 }

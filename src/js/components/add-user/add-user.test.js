@@ -44,7 +44,6 @@ describe('<add-user> component', () => {
 
   // inject service because ctrl use it
   beforeEach(inject((_$http_, _usersListService_, _$httpBackend_) => {
-    // $http = _$http_
     $httpBackend = _$httpBackend_
 
     $httpBackend
@@ -120,6 +119,13 @@ describe('<add-user> component', () => {
     it('Should have warning with new userObj, that have short name', () => {
       ctrl.uniqueProp('haveMinimalLength', errorUser)
       expect(ctrl.haveNoErrors()).toBe(false)
+    })
+
+    it('Should add new user to array', () => {
+      const e = jasmine.createSpyObj('e', [ 'preventDefault' ])
+      expect(ctrl.srvc.users.length).toBe(2)
+      ctrl.addUser(e, rightUser)
+      expect(ctrl.srvc.users.length).toBe(3)
     })
 
   })
