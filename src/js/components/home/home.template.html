@@ -66,31 +66,33 @@
         </th>
       </tr>
     </thead>
-    <tr ng-repeat="user in $ctrl.srvc.users | orderBy:$ctrl.sortType:$ctrl.sortReverse | filter:search">
-      <td>{{user.id}}</td>
-      <td>{{user.name}}</td>
-      <td>{{user.username}}</td>
-      <td>
-        <a href="mailto:{{user.email}}">
-          {{user.email}}
-        </a>
-      </td>
-      <td>
-        <address>
-          {{user.address.street}}<br>
-          {{user.address.suite}}<br>
-          {{user.address.city}}<br>
-          {{user.address.zipcode}}
-        </address>
-      </td>
-      <td>
-        {{user.company.name}}
-      </td>
-      <td class="text-center">
-        <a ng-click="$ctrl.srvc.deleteUser(user.id)">
-          <span class="glyphicon glyphicon-remove delete-user"></span>
-        </a>
-      </td>
-    </tr>
+    <tbody>
+      <tr ng-repeat="user in $ctrl.srvc.users | orderBy:$ctrl.sortType:$ctrl.sortReverse | filter:search">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.username}}</td>
+        <td>
+          <a href="mailto:{{user.email}}">
+            {{user.email}}
+          </a>
+        </td>
+        <td>
+          <address>
+            {{user.address.street}}<br>
+            {{user.address.suite}}<br>
+            {{user.address.city}}<br>
+            {{user.address.zipcode}}
+          </address>
+        </td>
+        <td>
+          {{user.company.name}}
+        </td>
+        <td class="text-center">
+          <a ng-click="$ctrl.srvc.deleteUser(user.id)">
+            <span class="glyphicon glyphicon-remove delete-user"></span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>
