@@ -13,6 +13,27 @@ describe('<add-user> component', () => {
         'email': 'Shanna@melissa.tv'
       }
     ]
+
+  const rightUser = {
+    'id': 3,
+    'name': 'Fill Smith',
+    'username': 'Filly',
+    'email': 'filly@bumbam.org'
+  }
+  // wrongUser have existing username
+  const wrongUser = {
+    'id': 4,
+    'name': 'Kevin Nill',
+    'username': 'bret',
+    'email': 'kev@bumbam.org'
+  }
+  const errorUser = {
+    'id': 5,
+    'name': 'py',
+    'username': 'goovry',
+    'email': 'goove@bumbam.org'
+  }
+
   beforeEach(module('app'))
   let scope, element, ctrl, $http, $httpBackend, usersListService
 
@@ -53,4 +74,22 @@ describe('<add-user> component', () => {
   })
 
   // --- TESTING CONTROLLER ---
+  describe('testing controller', () => {
+
+    it('Must have no warnings about minimal username length of good userObj', () => {
+      ctrl.haveMinimalLength('username', rightUser)
+      expect(ctrl.warnings.username).toBe('')
+    })
+
+    it('Must have warnings about minimal name length of bad userObj, of not important field', () => {
+      ctrl.haveMinimalLength('name', errorUser)
+      expect(ctrl.warnings.name).toBe(`Minimal length 3 symbols`)
+    })
+
+    it('Must have warnings about minimal name length of bad userObj, of important field', () => {
+      ctrl.haveMinimalLength('name', errorUser, 3, true)
+      expect(ctrl.warnings.name).toBe(`You must enter atleast 3 symbols`)
+    })
+
+  })
 })
