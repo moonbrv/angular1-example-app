@@ -41,7 +41,7 @@ export default class addUser {
    * @param  {object} userObj
    */
   uniqueProp(prop, userObj) {
-    if (typeof userObj[prop] === 'string') {
+    if (angular.isString(userObj[prop])) {
       this.errors[prop] = this.srvc.users.filter(x => x[prop].trim().toLowerCase() === userObj[prop].trim().toLowerCase()).length ? ` User with this ${prop} already exist` : ''
     } else {
       this.errors[prop] = this.srvc.users.filter(x => x[prop] === userObj[prop]).length ? ` User with this ${prop} already exist` : ''
@@ -72,6 +72,6 @@ export default class addUser {
     if (this.haveNoErrors()) {
       this.srvc.addUser(userObj)
     }
-    document.getElementById('user-add').reset()
+    $document.getElementById('user-add').reset()
   }
 }

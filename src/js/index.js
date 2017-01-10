@@ -14,6 +14,8 @@ import about from './components/about/'
 import addUser from './components/add-user/'
 
 // add jquery
+// disable eslint from error angular/window-service
+// eslint-disable-next-line
 window.jQuery = $
 
 // add bootstrap

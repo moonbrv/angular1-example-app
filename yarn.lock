@@ -1892,6 +1892,10 @@ eslint:
     text-table "~0.2.0"
     user-home "^2.0.0"
 
+eslint-config-angular:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-angular/-/eslint-config-angular-0.5.0.tgz#e0aae0132e39e7467df3f7547fec81a44d3685c4"
+
 eslint-config-standard@~6.2.1:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-6.2.1.tgz#d3a68aafc7191639e7ee441e7348739026354292"

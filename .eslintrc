@@ -1,17 +1,28 @@
 {
-  "extends": "standart",
+  "extends": [
+    "angular",
+    "standart"
+    ],
   "plugins": [
         "html",
         "angular"
     ],
   "globals": {
     "__DEV__": false,
-    "__TEST__": false
+    "__TEST__": false,
+    "$window": true,
+    "$document": true
   },
   "env": {
     "browser": true,
     "node": true,
     "jasmine": true,
     "phantomjs": true
-    }
+  },
+  "rules": {
+    "angular/no-service-method": 0
+  },
+  "settings": {
+    "angular": 1
+  }
 }
