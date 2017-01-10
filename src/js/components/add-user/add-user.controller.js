@@ -35,6 +35,7 @@ export default class addUser {
 
   /**
    * function check if a value of chosen propherty of object is unique in users array
+   * notice that error messages have space as first character
    *
    * @param  {string} prop
    * @param  {object} userObj

@@ -91,5 +91,15 @@ describe('<add-user> component', () => {
       expect(ctrl.warnings.name).toBe(`You must enter atleast 3 symbols`)
     })
 
+    it('Should have no error about unique username in good user object', () => {
+      ctrl.uniqueProp('username', rightUser)
+      expect(ctrl.errors.username).toBe('')
+    })
+
+    it('Should have error about unique username in bad user object', () => {
+      ctrl.uniqueProp('username', wrongUser)
+      expect(ctrl.errors.username).toBe(' User with this username already exist')
+    })
+
   })
 })
