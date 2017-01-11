@@ -22,6 +22,9 @@ require('bootstrap-sass/assets/javascripts/bootstrap.js')
 // add stylesheet
 require('./../scss/style.scss')
 
+// load image
+require('./../img/github.svg')
+
 // create angular module
 angular.module('app', [uiRouter])
   .config(routing)
