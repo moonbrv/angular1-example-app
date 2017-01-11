@@ -7,6 +7,7 @@
 
 export default class usersListService {
   constructor($http) {
+    'ngInject'
     this.users = []
     this.getUsers($http)
   }

@@ -7,6 +7,7 @@
 
 export default class addUser {
   constructor(usersListService, $element) {
+    'ngInject'
     this.elem = $element
     this.srvc = usersListService
     this.errors = {}
