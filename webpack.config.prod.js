@@ -100,7 +100,7 @@ module.exports = {
         unused: true,
         warnings: false,
         drop_console: true,
-        unsafe: true
+        unsafe: false
       }
     }),
     new StyleLintPlugin({
