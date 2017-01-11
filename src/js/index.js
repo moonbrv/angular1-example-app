@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import $ from 'jquery/dist/jquery.slim.js'
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
 
