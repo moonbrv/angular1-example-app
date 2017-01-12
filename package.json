@@ -4,11 +4,11 @@
   "description": "Simple app for managing users, created by Angular.js v1.5.9",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test karma start",
+    "test": "NODE_ENV=test karma start --single-run",
+    "test:watch": "NODE_ENV=test karma start",
     "dev": "NODE_ENV=development webpack-dev-server --config ./webpack.config.dev.js --hot --inline",
-    "start": "run-p dev test",
-    "prod":  "NODE_ENV=production webpack --config ./webpack.config.prod.js",
-    "gh-pages": "git subtree push --prefix dist origin gh-pages"
+    "start": "run-p dev test:watch",
+    "prod":  "NODE_ENV=production webpack --config ./webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
