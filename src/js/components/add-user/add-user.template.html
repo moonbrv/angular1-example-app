@@ -90,5 +90,11 @@
       <input type="text" class="form-control" id="addInputCompany" placeholder="Company name" ng-model="user.company.name" name="company">
     </div>
   </div>
-  <button type="submit" class="btn btn-primary text-uppercase col-sm-offset-2" ng-disabled="addUserForm.$invalid || !$ctrl.haveNoErrors() ||addUserForm.$pristine">Add user</button>
+  <div ng-switch="$ctrl.url">
+    <div class="col-sm-offset-2 col-sm-6 col-md-4 buttons-wrapper">
+      <a ui-sref="home" class="btn btn-warning text-uppercase">Cancel</a>
+      <button ng-switch-when="/add-user" type="submit" class="btn btn-success text-uppercase pull-right" ng-disabled="addUserForm.$invalid || !$ctrl.haveNoErrors() ||addUserForm.$pristine">Add user</button>
+      <a ng-switch-default ui-sref="home" class="btn btn-success text-uppercase pull-right" ng-click="$ctrl.changeUser(user)" ng-disabled="!$ctrl.haveNoErrors()">Save</a>
+    </div>
+  </div>
 </form>

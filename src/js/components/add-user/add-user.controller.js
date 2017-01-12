@@ -14,8 +14,6 @@ export default class addUser {
     this.errors = {}
     this.warnings = {}
     this.scope.user = Object.assign({}, this.editedUser)
-    // eslint-disable-next-line
-    // console.log($location.url())
     this.url = $location.url()
   }
 
@@ -79,9 +77,18 @@ export default class addUser {
    */
   addUser(e, userObj) {
     e.preventDefault()
-    if (this.haveNoErrors()) {
+    if (this.haveNoErrors() && userObj.id) {
       this.srvc.addUser(userObj)
+      this.elem.find('form')[0].reset()
     }
-    this.elem.find('form')[0].reset()
+  }
+
+  changeUser(userObj) {
+    if (this.haveNoErrors() && userObj.id) {
+      this.srvc.users = [
+        ...this.srvc.users.filter(x => x.id !== userObj.id),
+        userObj
+      ]
+    }
   }
 }

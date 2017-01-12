@@ -12,3 +12,15 @@
 span.required {
   color: $brand-danger;
 }
+
+.buttons-wrapper {
+  padding: 0;
+
+  @media (min-width: 768px) {
+    padding: 0 15px 0 5px;
+  }
+
+  @media (min-width: 992px) {
+    padding-right: 15px;
+  }
+}
