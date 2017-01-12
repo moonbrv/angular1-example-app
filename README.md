@@ -5,6 +5,9 @@ This SPA was created for learning Angularjs framework, and for improvement my de
   - ### [Live preview](https://moonbrv.github.io/angular1-example-app/)
   - ### [Screenshots](/screenshots/screenshots.md)
 
+## Requirenment:
+  - Node v5+
+
 ## Which features was created:
   - Fetching data from external API and store it in Service.
   - Display users data in the table, with sorting and filter options.
