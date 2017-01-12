@@ -1,9 +1,9 @@
-# Angular v1.5.x app for managing users data
+# Angular v1.5.x app for managing users data ![Home page](https://travis-ci.org/moonbrv/angular1-example-app.svg?branch=master "Home page")
 This SPA was created for learning Angularjs framework, and for improvement my developer skills. App builded on components and use ES6, have routing. Controllers and service have unit tests for their methods.
 
 ## Do you want to see it?
-  - ### [Live preview](https://moonbrv.github.io/angular1-example-app/)
-  - ### [Screenshots](/screenshots/screenshots.md)
+  - [Live preview](https://moonbrv.github.io/angular1-example-app/)
+  - [Screenshots](/screenshots/screenshots.md)
 
 ## Requirenment:
   - Node v5+
