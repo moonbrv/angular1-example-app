@@ -18,4 +18,12 @@ export default function routing($stateProvider, $urlRouterProvider, $locationPro
       url: '/add-user',
       component: 'addUser'
     })
+    .state('edit', {
+      url: '/{userId}',
+      component: 'addUser',
+      resolve: {
+        editedUser: (usersListService, $stateParams, $location) => usersListService.users.filter(x => x.id === Number($stateParams.userId))[0]
+
+      }
+    })
 }

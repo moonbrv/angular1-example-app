@@ -3,5 +3,6 @@ import controller from './add-user.controller.js'
 
 export default {
   template,
-  controller
+  controller,
+  bindings: {editedUser: '='}
 }

@@ -6,12 +6,17 @@
  */
 
 export default class addUser {
-  constructor(usersListService, $element) {
+  constructor(usersListService, $element, $scope, $location) {
     'ngInject'
+    this.scope = $scope
     this.elem = $element
     this.srvc = usersListService
     this.errors = {}
     this.warnings = {}
+    this.scope.user = Object.assign({}, this.editedUser)
+    // eslint-disable-next-line
+    // console.log($location.url())
+    this.url = $location.url()
   }
 
   /**
@@ -44,7 +49,10 @@ export default class addUser {
    */
   uniqueProp(prop, userObj) {
     if (angular.isString(userObj[prop])) {
-      this.errors[prop] = this.srvc.users.filter(x => x[prop].trim().toLowerCase() === userObj[prop].trim().toLowerCase()).length ? ` User with this ${prop} already exist` : ''
+      const filtered = this.srvc.users
+      .filter(x => x[prop].trim().toLowerCase() === userObj[prop].trim().toLowerCase())
+      .filter(x => x.id !== userObj.id)
+      this.errors[prop] = filtered.length ? ` User with this ${prop} already exist` : ''
     } else {
       this.errors[prop] = this.srvc.users.filter(x => x[prop] === userObj[prop]).length ? ` User with this ${prop} already exist` : ''
     }
