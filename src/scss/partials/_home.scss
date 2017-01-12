@@ -1,3 +1,13 @@
+@mixin table-icon($fs, $color, $color-hov) {
+  font-size: $fs;
+  cursor: pointer;
+  color: $color;
+
+  &:hover {
+    color: $color-hov;
+  }
+}
+
 // bootstrap styles revrite
 .table-hover > tbody > tr:hover {
   background-color: lighten(#337ab7, 50%);
@@ -12,11 +22,9 @@
 }
 
 .delete-user {
-  font-size: 28px;
-  color: lighten($gray-light, 20%);
-  cursor: pointer;
+  @include table-icon(28px, lighten($gray-light, 20%), $brand-danger);
+}
 
-  &:hover {
-    color: $brand-danger;
-  }
+.edit-user {
+  @include table-icon(22px, $gray-light, $brand-success);
 }
