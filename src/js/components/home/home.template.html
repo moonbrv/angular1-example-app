@@ -25,12 +25,12 @@
   <table class="table table-condensed table-bordered table-hover table-striped">
     <thead>
       <tr>
-        <th>
+        <!--<th>
           <a href="#" ng-click="$ctrl.setOrder('id')">
             id
             <span ng-show="$ctrl.setShow('id')" ng-class="$ctrl.setIcon()"></span>
           </a>
-        </th>
+        </th>-->
         <th>
           <a href="#" ng-click="$ctrl.setOrder('name')">
             Name
@@ -71,7 +71,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="user in $ctrl.srvc.users | orderBy:$ctrl.sortType:$ctrl.sortReverse | filter:search">
-        <td>{{user.id}}</td>
+        <!--<td>{{user.id}}</td>-->
         <td>{{user.name}}</td>
         <td>{{user.username}}</td>
         <td>
