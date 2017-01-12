@@ -1,22 +1,10 @@
 <form action="" id="user-filter" class="filter-form form-horizontal">
   <h3 class="text-center filter-form__header">User's filters</h3>
-  <p class="help-block text-center">You can filtering users by input parameters in forms below</p>
+  <p class="help-block text-center">You can filter users by input some search parameters in forms below</p>
   <div class="form-group">
-    <label for="searchInputName" class="col-sm-2 control-label">Name</label>
+    <label for="searchInputName" class="col-sm-2 control-label">Filter:</label>
     <div class="col-sm-6 col-md-4">
-      <input type="text" class="form-control" id="searchInputName" placeholder="Name" ng-model="search.name">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="searchInputUsername" class="col-sm-2 control-label">Username</label>
-    <div class="col-sm-6 col-md-4">
-      <input type="text" class="form-control" id="searchInputUsername" placeholder="Username" ng-model="search.username">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="searchInputEmail" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-6 col-md-4">
-      <input type="text" class="form-control" id="searchInputEmail" placeholder="Name" ng-model="search.email">
+      <input type="text" class="form-control" id="searchInputName" placeholder="Input data that you are looking for..." ng-model="search">
     </div>
   </div>
 </form>
