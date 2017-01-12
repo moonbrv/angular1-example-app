@@ -128,5 +128,19 @@ describe('<add-user> component', () => {
       expect(ctrl.srvc.users.length).toBe(3)
     })
 
+    it('Should change user data', () => {
+      expect(ctrl.srvc.users.length).toBe(2)
+      const changedUser = {
+        'id': 1,
+        'name': 'Clark Kent',
+        'username': 'Superman',
+        'email': 'Sincere@april.biz'
+      }
+      ctrl.changeUser(changedUser)
+      expect(ctrl.srvc.users.length).toBe(2)
+      const findedUser = ctrl.srvc.users.filter(x => x.id === changedUser.id)[0]
+      expect(findedUser.name).toBe(changedUser.name)
+      expect(findedUser.username).toBe(changedUser.username)
+    })
   })
 })
