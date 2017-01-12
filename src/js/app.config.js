@@ -2,7 +2,8 @@ export default function routing($stateProvider, $urlRouterProvider, $locationPro
   'ngInject'
   $locationProvider.html5Mode({
     enabled: true,
-    requireBase: false
+    rewriteLinks: true,
+    requireBase: true
   })
   $urlRouterProvider.otherwise('/')
   $stateProvider
@@ -23,7 +24,6 @@ export default function routing($stateProvider, $urlRouterProvider, $locationPro
       component: 'addUser',
       resolve: {
         editedUser: (usersListService, $stateParams, $location) => usersListService.users.filter(x => x.id === Number($stateParams.userId))[0]
-
       }
     })
 }
