@@ -1,0 +1,18 @@
+.main-footer {
+  width: 100%;
+  background-color: $gray-darker;
+  margin-top: -$imgHeight;
+  height: $imgHeight;
+
+  &__link {
+    display: block;
+  }
+
+  &__img {
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    height: $imgHeight;
+    padding: $imgPadding 0;
+  }
+}
