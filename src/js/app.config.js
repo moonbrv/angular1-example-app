@@ -1,10 +1,7 @@
 export default function routing($stateProvider, $urlRouterProvider, $locationProvider) {
   'ngInject'
-  $locationProvider.html5Mode({
-    enabled: true,
-    rewriteLinks: true,
-    requireBase: true
-  })
+  // html5 mode commented out, because i want serve this app on gh-pages, which not support this option yet.
+  // $locationProvider.html5Mode(true)
   $urlRouterProvider.otherwise('/')
   $stateProvider
     .state('home', {

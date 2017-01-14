@@ -12,7 +12,7 @@ This SPA was created for learning Angularjs framework, and for improvement my de
   - Fetching data from external API and store it in Service.
   - Display users data in the table, with sorting and filter options.
   - Delete, edit and add users.
-  - Routing via angular-ui-router.
+  - Routing via angular-ui-router. Routing without html5 mode because gh-pages not support it yet.
   - Reusing <add-user> component for different purposes(adding and edit users data).
   - App builded on components.
   - Form validation by using Angular form parameters.
