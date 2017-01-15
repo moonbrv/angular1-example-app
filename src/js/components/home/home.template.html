@@ -58,7 +58,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="user in $ctrl.srvc.users | orderBy:$ctrl.sortType:$ctrl.sortReverse | filter:search">
+      <tr ng-repeat="user in $ctrl.usersListService.users | orderBy:$ctrl.sortType:$ctrl.sortReverse | filter:search">
         <!--<td>{{user.id}}</td>-->
         <td>{{user.name}}</td>
         <td>{{user.username}}</td>
@@ -84,7 +84,7 @@
           </a>
         </td>
         <td class="text-center">
-          <a ng-click="$ctrl.srvc.deleteUser(user.id)">
+          <a ng-click="$ctrl.usersListService.deleteUser(user.id)">
             <span class="glyphicon glyphicon-remove delete-user"></span>
           </a>
         </td>
