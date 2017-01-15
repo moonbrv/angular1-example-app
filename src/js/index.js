@@ -13,7 +13,7 @@ import siteHeader from './components/site-header'
 import siteFooter from './components/site-footer'
 import home from './components/home/'
 import about from './components/about/'
-import addUser from './components/add-user/'
+import editUser from './components/edit-user/'
 
 // add jquery
 window.jQuery = $
@@ -35,4 +35,4 @@ angular.module('app', [uiRouter])
   .component('siteFooter', siteFooter)
   .component('home', home)
   .component('about', about)
-  .component('addUser', addUser)
+  .component('editUser', editUser)

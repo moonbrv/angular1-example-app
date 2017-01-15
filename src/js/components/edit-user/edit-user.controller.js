@@ -1,8 +1,8 @@
 /**
- * this class is controller of <add-user> component
+ * this class is controller of <edit-user> component
  *
  * @export
- * @class addUser
+ * @class editUser
  */
 
 export default class addUser {

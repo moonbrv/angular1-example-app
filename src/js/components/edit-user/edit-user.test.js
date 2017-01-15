@@ -1,4 +1,4 @@
-describe('<add-user> component', () => {
+describe('<edit-user> component', () => {
   let responseData = [
       {
         'id': 1,
@@ -62,10 +62,10 @@ describe('<add-user> component', () => {
 
   beforeEach(inject((_$rootScope_, _$compile_) => {
     scope = _$rootScope_.$new()
-    element = angular.element('<add-user></add-user>')
+    element = angular.element('<edit-user></edit-user>')
     element = _$compile_(element)(scope)
     scope.$apply()
-    ctrl = element.controller('addUser')
+    ctrl = element.controller('editUser')
   }))
 
   it('Should render text', () => {
