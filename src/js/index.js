@@ -1,6 +1,7 @@
 import $ from 'jquery/dist/jquery.slim.js'
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
+import ngMessages from 'angular-messages'
 
 // import routing config
 import routing from './app.config.js'
@@ -28,7 +29,7 @@ require('./../scss/style.scss')
 require('./../img/github.svg')
 
 // create angular module
-angular.module('app', [uiRouter])
+angular.module('app', [uiRouter, ngMessages])
   .config(routing)
   .service('usersListService', usersListService)
   .component('siteHeader', siteHeader)
