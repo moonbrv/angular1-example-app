@@ -8,7 +8,7 @@
 export default class homeCtrl {
   constructor(usersListService) {
     'ngInject'
-    this.srvc = usersListService
+    this.usersListService = usersListService
     this.sortType = 'name'
     this.sortReverse = false
   }

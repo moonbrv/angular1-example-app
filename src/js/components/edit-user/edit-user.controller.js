@@ -1,8 +1,8 @@
 /**
- * this class is controller of <add-user> component
+ * this class is controller of <edit-user> component
  *
  * @export
- * @class addUser
+ * @class editUser
  */
 
 export default class addUser {
@@ -10,7 +10,7 @@ export default class addUser {
     'ngInject'
     this.scope = $scope
     this.elem = $element
-    this.srvc = usersListService
+    this.usersListService = usersListService
     this.errors = {}
     this.warnings = {}
     this.scope.user = Object.assign({}, this.editedUser)
@@ -47,12 +47,12 @@ export default class addUser {
    */
   uniqueProp(prop, userObj) {
     if (angular.isString(userObj[prop])) {
-      const filtered = this.srvc.users
+      const filtered = this.usersListService.users
       .filter(x => x[prop].trim().toLowerCase() === userObj[prop].trim().toLowerCase())
       .filter(x => x.id !== userObj.id)
       this.errors[prop] = filtered.length ? ` User with this ${prop} already exist` : ''
     } else {
-      this.errors[prop] = this.srvc.users.filter(x => x[prop] === userObj[prop]).length ? ` User with this ${prop} already exist` : ''
+      this.errors[prop] = this.usersListService.users.filter(x => x[prop] === userObj[prop]).length ? ` User with this ${prop} already exist` : ''
     }
   }
 
@@ -78,15 +78,15 @@ export default class addUser {
   addUser(e, userObj) {
     e.preventDefault()
     if (this.haveNoErrors() && userObj.id) {
-      this.srvc.addUser(userObj)
+      this.usersListService.addUser(userObj)
       this.elem.find('form')[0].reset()
     }
   }
 
   changeUser(userObj) {
     if (this.haveNoErrors() && userObj.id) {
-      this.srvc.users = [
-        ...this.srvc.users.filter(x => x.id !== userObj.id),
+      this.usersListService.users = [
+        ...this.usersListService.users.filter(x => x.id !== userObj.id),
         userObj
       ]
     }

@@ -60,7 +60,7 @@ describe('<home> component', () => {
     })
 
     it('must inject service', () => {
-      expect(ctrl.srvc).toEqual(usersListService)
+      expect(ctrl.usersListService).toEqual(usersListService)
     })
 
     it('default sortType must be \'name\'', () => {

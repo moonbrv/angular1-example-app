@@ -1,4 +1,4 @@
-describe('<add-user> component', () => {
+describe('<edit-user> component', () => {
   let responseData = [
       {
         'id': 1,
@@ -62,10 +62,10 @@ describe('<add-user> component', () => {
 
   beforeEach(inject((_$rootScope_, _$compile_) => {
     scope = _$rootScope_.$new()
-    element = angular.element('<add-user></add-user>')
+    element = angular.element('<edit-user></edit-user>')
     element = _$compile_(element)(scope)
     scope.$apply()
-    ctrl = element.controller('addUser')
+    ctrl = element.controller('editUser')
   }))
 
   it('Should render text', () => {
@@ -123,13 +123,13 @@ describe('<add-user> component', () => {
 
     it('Should add new user to array', () => {
       const e = jasmine.createSpyObj('e', [ 'preventDefault' ])
-      expect(ctrl.srvc.users.length).toBe(2)
+      expect(ctrl.usersListService.users.length).toBe(2)
       ctrl.addUser(e, rightUser)
-      expect(ctrl.srvc.users.length).toBe(3)
+      expect(ctrl.usersListService.users.length).toBe(3)
     })
 
     it('Should change user data', () => {
-      expect(ctrl.srvc.users.length).toBe(2)
+      expect(ctrl.usersListService.users.length).toBe(2)
       const changedUser = {
         'id': 1,
         'name': 'Clark Kent',
@@ -137,8 +137,8 @@ describe('<add-user> component', () => {
         'email': 'Sincere@april.biz'
       }
       ctrl.changeUser(changedUser)
-      expect(ctrl.srvc.users.length).toBe(2)
-      const findedUser = ctrl.srvc.users.filter(x => x.id === changedUser.id)[0]
+      expect(ctrl.usersListService.users.length).toBe(2)
+      const findedUser = ctrl.usersListService.users.filter(x => x.id === changedUser.id)[0]
       expect(findedUser.name).toBe(changedUser.name)
       expect(findedUser.username).toBe(changedUser.username)
     })
