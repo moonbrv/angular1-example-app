@@ -144,7 +144,6 @@
     <div class="col-sm-offset-2 col-sm-6 col-md-4 buttons-wrapper">
       <a ui-sref="home" class="btn btn-warning text-uppercase">Cancel</a>
       <button ng-switch-when="/edit-user" type="submit" class="btn btn-success text-uppercase pull-right" ng-disabled="editUserForm.$invalid || editUserForm.$pristine">Add user</button>
-      <!--<a ng-switch-when="/edit-user" role="button" ui-sref="home" type="submit" class="btn btn-success text-uppercase pull-right" ng-disabled="editUserForm.$invalid || editUserForm.$pristine">Add user</a>-->
       <a ng-switch-default ui-sref="home" class="btn btn-success text-uppercase pull-right" ng-click="$ctrl.changeUser(user)" ng-disabled="editUserForm.$invalid || editUserForm.$pristine">Save</a>
     </div>
   </div>
