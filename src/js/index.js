@@ -7,7 +7,7 @@ import ngMessages from 'angular-messages'
 import routing from './app.config.js'
 
 // import service
-import usersListService from './services/usersList.service.js'
+import usersListService from './services/usersList'
 
 // import components
 import siteHeader from './components/site-header'
