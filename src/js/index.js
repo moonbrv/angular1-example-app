@@ -16,6 +16,9 @@ import home from './components/home/'
 import about from './components/about/'
 import editUser from './components/edit-user/'
 
+// import directives
+import uniqueEmail from './directives/uniqueEmail'
+
 // add jquery
 window.jQuery = $
 
@@ -32,6 +35,7 @@ require('./../img/github.svg')
 angular.module('app', [uiRouter, ngMessages])
   .config(routing)
   .service('usersListService', usersListService)
+  .directive('uniqueEmail', uniqueEmail)
   .component('siteHeader', siteHeader)
   .component('siteFooter', siteFooter)
   .component('home', home)

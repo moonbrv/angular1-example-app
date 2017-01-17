@@ -17,10 +17,10 @@
         You should enter atleast 3 characters.
     </div>
   </div>
-  <div ng-message="unique">
+  <div ng-message="uniqueEmail">
     <div class="alert alert-danger" role="alert">
       <span class="glyphicon glyphicon-alert"></span>
-        You should enter atleast 3 characters.
+        User with that email already exist.
     </div>
   </div>
 </script>
@@ -39,9 +39,9 @@
     }">
     <label for="addInputName" class="col-sm-2 control-label">Name <span class="required">*</span></label>
     <div class="col-sm-6 col-md-4">
-      <input type="text" class="form-control" id="addInputName" placeholder="Name" ng-model="user.name" name="name" ng-keyup="$ctrl.haveMinimalLength('name', user, 3, true)" required>
-      <div class="alert alert-warning" role="alert" ng-show="$ctrl.warnings.name">
-        <span class="glyphicon glyphicon-alert"></span>{{$ctrl.warnings.name}}
+      <input type="text" class="form-control" id="addInputName" placeholder="Name" ng-model="user.name" name="name" ng-keyup="$ctrl.haveMinimalLength('name', user, 3, true)" required minlength="3">
+      <div ng-messages="editUserFrom.name.$error" role="alert">
+        <div ng-messages-include="error-messages"></div>
       </div>
     </div>
   </div>
@@ -53,12 +53,9 @@
     }">
     <label for="addInputUserame" class="col-sm-2 control-label">Username <span class="required">*</span></label>
     <div class="col-sm-6 col-md-4">
-      <input type="text" class="form-control" id="addInputUserame" placeholder="Username" ng-model="user.username" name="username" ng-keyup="[$ctrl.uniqueProp('username', user), $ctrl.haveMinimalLength('username', user, 3, true)]" required>
-      <div class="alert alert-danger" role="alert" ng-show="$ctrl.errors.username">
-        <span class="glyphicon glyphicon-alert"></span>{{$ctrl.errors.username}}
-      </div>
-      <div class="alert alert-warning" role="alert" ng-show="$ctrl.warnings.username">
-        <span class="glyphicon glyphicon-alert"></span>{{$ctrl.warnings.username}}
+      <input type="text" class="form-control" id="addInputUserame" placeholder="Username" ng-model="user.username" name="username" ng-keyup="[$ctrl.uniqueProp('username', user), $ctrl.haveMinimalLength('username', user, 3, true)]" required minlength="3">
+      <div ng-messages="editUserFrom.username.$error" role="alert">
+        <div ng-messages-include="error-messages"></div>
       </div>
     </div>
   </div>
@@ -70,11 +67,9 @@
     <label for="addInputEmail" class="col-sm-2 control-label">Email <span class="required">*</span></label>
     <div class="col-sm-6 col-md-4">
       <input type="email" class="form-control" id="addInputEmail" placeholder="Email" ng-model="user.email" name="email" ng-keyup="$ctrl.uniqueProp('email', user)" required minlength="3">
-    <div ng-messages="editUserFrom.email.$error" role="alert">
-
-      <div ng-message="email">This field must be a valid email address.</div>
-      <div ng-message="minlength">This field can be at most 15 characters long.</div>
-  </div>
+      <div ng-messages="editUserFrom.email.$error" role="alert">
+        <div ng-messages-include="error-messages"></div>
+      </div>
     </div>
   </div>
   <div class="form-group">
