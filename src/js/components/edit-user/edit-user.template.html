@@ -66,7 +66,7 @@
     }">
     <label for="addInputEmail" class="col-sm-2 control-label">Email <span class="required">*</span></label>
     <div class="col-sm-6 col-md-4">
-      <input type="email" class="form-control" id="addInputEmail" placeholder="Email" ng-model="user.email" name="email" ng-keyup="$ctrl.uniqueProp('email', user)" required minlength="3">
+      <input type="email" class="form-control" id="addInputEmail" placeholder="Email" ng-model="user.email" name="email" ng-keyup="$ctrl.uniqueProp('email', user)" required minlength="3" unique-email>
       <div ng-messages="editUserFrom.email.$error" role="alert">
         <div ng-messages-include="error-messages"></div>
       </div>

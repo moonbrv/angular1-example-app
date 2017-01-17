@@ -1,16 +1,22 @@
-export default class editUsersValidation {
+/**
+ * Class to create directive which add unique email validation to form
+ *
+ * @export
+ * @class uniqueEmail
+ */
+export default class uniqueEmail {
   constructor(usersListService) {
-    this.restrict = 'A'
+    'ngInject'
     this.require = 'ngModel'
+    this.restrict = 'A'
     this.usersListService = usersListService
   }
+
   link(scope, elemnt, attr, ctrl) {
+    const usersListService = this.usersListService
     function custromValidator(ngModelValue) {
-      if (this.usersListService.uniqueValue('email', ngModelValue)) {
-        ctrl.$setValidity('uniqueEmail', true)
-      } else {
-        ctrl.$setValidity('uniqueEmail', false)
-      }
+      const validity = usersListService.uniqueValue('email', ngModelValue)
+        ctrl.$setValidity('uniqueEmail', validity)
       return ngModelValue
     }
     ctrl.$parsers = [...ctrl.$parsers, custromValidator]

@@ -1,3 +1,3 @@
 import UniqueEmail from './uniqueEmail.class.js'
 
-export default () => new UniqueEmail()
+export default (usersListService) => new UniqueEmail(usersListService)
