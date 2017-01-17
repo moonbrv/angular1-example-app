@@ -57,13 +57,14 @@ export default class usersListService {
    * @returns  {boolean}
    */
   uniqueValue(prop, val) {
-    let filtered
+    let unique
     if (angular.isString(val)) {
-      filtered = this.users
+      unique = this.users
       .filter(x => x[prop].trim().toLowerCase() === val.trim().toLowerCase())
+      .length
     } else {
-      filtered = this.users.filter(x => x[prop] === val)
+      unique = this.users.filter(x => x[prop] === val).length
     }
-    return !filtered.length
+    return !unique
   }
 }

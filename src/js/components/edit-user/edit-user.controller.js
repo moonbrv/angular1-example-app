@@ -5,7 +5,7 @@
  * @class editUser
  */
 
-export default class addUser {
+export default class editUser {
   constructor(usersListService, $element, $scope, $location) {
     'ngInject'
     this.scope = $scope
@@ -14,7 +14,8 @@ export default class addUser {
     this.errors = {}
     this.warnings = {}
     this.scope.user = Object.assign({}, this.editedUser)
-    this.url = $location.url()
+    this.location = $location
+    this.url = this.location.url()
   }
 
   /**
@@ -77,18 +78,15 @@ export default class addUser {
    */
   addUser(e, userObj) {
     e.preventDefault()
-    if (this.haveNoErrors() && userObj.id) {
       this.usersListService.addUser(userObj)
       this.elem.find('form')[0].reset()
-    }
+      this.location.path('/')
   }
 
   changeUser(userObj) {
-    if (this.haveNoErrors() && userObj.id) {
       this.usersListService.users = [
         ...this.usersListService.users.filter(x => x.id !== userObj.id),
         userObj
       ]
-    }
   }
 }
