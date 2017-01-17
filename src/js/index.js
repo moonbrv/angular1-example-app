@@ -1,12 +1,13 @@
 import $ from 'jquery/dist/jquery.slim.js'
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
+import ngMessages from 'angular-messages'
 
 // import routing config
 import routing from './app.config.js'
 
 // import service
-import usersListService from './services/usersList.service.js'
+import usersListService from './services/usersList'
 
 // import components
 import siteHeader from './components/site-header'
@@ -14,6 +15,10 @@ import siteFooter from './components/site-footer'
 import home from './components/home/'
 import about from './components/about/'
 import editUser from './components/edit-user/'
+
+// import directives
+import uniqueEmail from './directives/uniqueEmail'
+import uniqueUsername from './directives/uniqueUsername'
 
 // add jquery
 window.jQuery = $
@@ -28,9 +33,11 @@ require('./../scss/style.scss')
 require('./../img/github.svg')
 
 // create angular module
-angular.module('app', [uiRouter])
+angular.module('app', [uiRouter, ngMessages])
   .config(routing)
   .service('usersListService', usersListService)
+  .directive('uniqueEmail', uniqueEmail)
+  .directive('uniqueUsername', uniqueUsername)
   .component('siteHeader', siteHeader)
   .component('siteFooter', siteFooter)
   .component('home', home)

@@ -50,4 +50,21 @@ export default class usersListService {
   addUser(obj) {
     this.users = [...this.users, Object.assign({}, {id: this.getId()}, obj)]
   }
+
+  /**
+   * @param  {string} prop
+   * @param  {any} val
+   * @returns  {boolean}
+   */
+  uniqueValue(prop, val) {
+    let unique
+    if (angular.isString(val)) {
+      unique = this.users
+      .filter(x => x[prop].trim().toLowerCase() === val.trim().toLowerCase())
+      .length
+    } else {
+      unique = this.users.filter(x => x[prop] === val).length
+    }
+    return !unique
+  }
 }
