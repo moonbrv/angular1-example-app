@@ -18,6 +18,7 @@ import editUser from './components/edit-user/'
 
 // import directives
 import uniqueEmail from './directives/uniqueEmail'
+import uniqueUsername from './directives/uniqueUsername'
 
 // add jquery
 window.jQuery = $
@@ -36,6 +37,7 @@ angular.module('app', [uiRouter, ngMessages])
   .config(routing)
   .service('usersListService', usersListService)
   .directive('uniqueEmail', uniqueEmail)
+  .directive('uniqueUsername', uniqueUsername)
   .component('siteHeader', siteHeader)
   .component('siteFooter', siteFooter)
   .component('home', home)
