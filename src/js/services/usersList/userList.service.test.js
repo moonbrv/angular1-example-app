@@ -1,25 +1,30 @@
-describe('Test: UserList.service', ()=> {
-
+describe('Test: UserList.service', () => {
   beforeEach(module('app'))
 
   describe('User list service', () => {
     let usersListService, $http, $httpBackend
     let responseData = [
       {
-        "id": 1,
-        "name": "Leanne Graham",
-        "username": "Bret",
-        "email": "Sincere@april.biz"
+        'id': 1,
+        'name': 'Leanne Graham',
+        'username': 'Bret',
+        'email': 'Sincere@april.biz'
       },
       {
-        "id": 2,
-        "name": "Ervin Howell",
-        "username": "Antonette",
-        "email": "Shanna@melissa.tv"
+        'id': 2,
+        'name': 'Ervin Howell',
+        'username': 'Antonette',
+        'email': 'Shanna@melissa.tv'
       }
     ]
 
-    beforeEach(inject(( _$http_, _$httpBackend_, _usersListService_) => {
+    const wrongUser = {
+        name: 'Ivan Smith',
+        username: 'bret',
+        email: 'smith@mail.mail'
+      }
+
+    beforeEach(inject((_$http_, _$httpBackend_, _usersListService_) => {
       $http = _$http_
       $httpBackend = _$httpBackend_
 
@@ -33,8 +38,8 @@ describe('Test: UserList.service', ()=> {
     }))
 
     afterEach(() => {
-      $httpBackend.verifyNoOutstandingExpectation();
-      $httpBackend.verifyNoOutstandingRequest();
+      $httpBackend.verifyNoOutstandingExpectation()
+      $httpBackend.verifyNoOutstandingRequest()
     })
 
     it('Service must be defined', () => {
@@ -44,7 +49,7 @@ describe('Test: UserList.service', ()=> {
     it('Method: getUsers - Successful get user data and save it', () => {
       $httpBackend.expectGET('https://jsonplaceholder.typicode.com/users')
       usersListService.getUsers($http)
-      $httpBackend.flush();
+      $httpBackend.flush()
       expect(usersListService.users.length).toBe(2)
     })
 
@@ -57,7 +62,7 @@ describe('Test: UserList.service', ()=> {
 
     it('Method: getId - should create new unique ID for new user', () => {
       const ID = usersListService.getId()
-      usersListService.users.forEach( x => {
+      usersListService.users.forEach(x => {
         expect(x.id).not.toEqual(ID)
       })
     })
@@ -74,6 +79,14 @@ describe('Test: UserList.service', ()=> {
       expect(usersListService.users[2].id).toEqual(3)
       expect(usersListService.users[2].name).toEqual(newUser.name)
       expect(usersListService.users[2].username).toEqual(newUser.username)
+    })
+
+    it('Method: uniqueValue - should return false on non-unique username', () => {
+      expect(usersListService.uniqueValue('username', wrongUser.username)).toBe(false)
+    })
+
+    it('Method: uniqueValue - should return true on unique email', () => {
+      expect(usersListService.uniqueValue('username', wrongUser.email)).toBe(true)
     })
 
   })
