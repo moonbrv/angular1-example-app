@@ -87,6 +87,11 @@ module.exports = {
   ],
 
   plugins: [
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
+    }),
     new StyleLintPlugin({
       syntax: 'scss',
       files: './src/**/*.scss'

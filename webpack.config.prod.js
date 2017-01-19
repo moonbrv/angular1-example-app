@@ -22,6 +22,7 @@ module.exports = {
 
   entry:
   {
+    vendor: ['angular', 'angular-ui-router', 'jquery/dist/jquery.slim.js', 'angular-messages'],
     main: path.join(__dirname, '/src/js/index.js')
   },
 
@@ -67,9 +68,32 @@ module.exports = {
       {
         test: /\.(jpg|png|svg|ico)$/,
         include: /src/,
-        loader: 'file-loader?name=[1]&regExp=src/(.*)'
+        loaders: [
+          'file-loader?name=[1]&regExp=src/(.*)',
+          'image-webpack'
+          ]
       }
     ]
+  },
+
+  imageWebpackLoader: {
+    mozjpeg: {
+      quality: 65
+    },
+    pngquant:{
+      quality: '65-90',
+      speed: 4
+    },
+    svgo:{
+      plugins: [
+        {
+          removeViewBox: false
+        },
+        {
+          removeEmptyAttrs: false
+        }
+      ]
+    }
   },
 
   postcss: [
@@ -86,8 +110,13 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new CleanWebpackPlugin(['dist']),
     new webpack.optimize.CommonsChunkPlugin({
-      children: true,
-      async: true
+      name: 'vendor',
+      minChunk: Infinity
+    }),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({

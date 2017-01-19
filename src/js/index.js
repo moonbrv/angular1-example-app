@@ -1,4 +1,4 @@
-import $ from 'jquery/dist/jquery.slim.js'
+import 'jquery/dist/jquery.slim.js'
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
 import ngMessages from 'angular-messages'
@@ -22,17 +22,14 @@ import editUser from './components/edit-user/'
 import uniqueEmail from './directives/uniqueEmail'
 import uniqueUsername from './directives/uniqueUsername'
 
-// add jquery
-window.jQuery = $
-
 // add bootstrap
-require('bootstrap-sass/assets/javascripts/bootstrap.js')
+import 'bootstrap-sass/assets/javascripts/bootstrap.js'
 
 // add stylesheet
-require('./../scss/style.scss')
+import './../scss/style.scss'
 
 // load image
-require('./../img/github.svg')
+import './../img/github.svg'
 
 // create angular module
 angular.module('app', [uiRouter, ngMessages])
