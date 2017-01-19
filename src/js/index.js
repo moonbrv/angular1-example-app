@@ -1,34 +1,44 @@
-import $ from 'jquery/dist/jquery.slim.js'
+import 'jquery/dist/jquery.slim.js'
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
+import ngMessages from 'angular-messages'
 
 // import routing config
-import routing from './app.config.js'
+import routing from './routing/config.js'
+import titleChange from './routing/pageTitle.js'
 
 // import service
-import usersListService from './services/usersList.service.js'
+import usersListService from './services/usersList'
 
 // import components
+import siteHeader from './components/site-header'
+import siteFooter from './components/site-footer'
 import home from './components/home/'
 import about from './components/about/'
-import addUser from './components/add-user/'
+import editUser from './components/edit-user/'
 
-// add jquery
-window.jQuery = $
+// import directives
+import uniqueEmail from './directives/uniqueEmail'
+import uniqueUsername from './directives/uniqueUsername'
 
 // add bootstrap
-require('bootstrap-sass/assets/javascripts/bootstrap.js')
+import 'bootstrap-sass/assets/javascripts/bootstrap.js'
 
 // add stylesheet
-require('./../scss/style.scss')
+import './../scss/style.scss'
 
 // load image
-require('./../img/github.svg')
+import './../img/github.svg'
 
 // create angular module
-angular.module('app', [uiRouter])
+angular.module('app', [uiRouter, ngMessages])
   .config(routing)
+  .run(titleChange)
   .service('usersListService', usersListService)
+  .directive('uniqueEmail', uniqueEmail)
+  .directive('uniqueUsername', uniqueUsername)
+  .component('siteHeader', siteHeader)
+  .component('siteFooter', siteFooter)
   .component('home', home)
   .component('about', about)
-  .component('addUser', addUser)
+  .component('editUser', editUser)

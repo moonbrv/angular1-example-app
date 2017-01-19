@@ -12,28 +12,7 @@
   </head>
   <body ng-cloak>
     <div class="content-wrapper">
-      <!-- NAVBAR START-->
-      <nav class="navbar navbar-inverse">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" ui-sref="home">UsersManager</a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-navbar">
-            <ul class="nav navbar-nav">
-              <li><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
-              <li><a ui-sref="addUser">Add User</a></li>
-              <li><a ui-sref="about">About</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- NAVBAR END-->
+      <site-header></site-header>
 
       <!-- CONTAINER START -->
       <div class="container">
@@ -43,10 +22,6 @@
     </div>
     <!-- CONTENT-WRAPPER END -->
 
-    <footer class="main-footer">
-      <a class="main-footer__link" href="https://github.com/moonbrv/angular1-example-app">
-        <img src="./img/github.svg" alt="see code on github" class="main-footer__img">
-      </a>
-    </footer>
+    <site-footer></site-footer>
   </body>
 </html>
