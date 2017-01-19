@@ -4,7 +4,9 @@ import uiRouter from 'angular-ui-router'
 import ngMessages from 'angular-messages'
 
 // import routing config
-import routing from './app.config.js'
+import routing from './routing/config.js'
+import titleChange from './routing/pageTitle.js'
+// import uiRouterTitle from 'angular-ui-router-title'
 
 // import service
 import usersListService from './services/usersList'
@@ -35,6 +37,7 @@ require('./../img/github.svg')
 // create angular module
 angular.module('app', [uiRouter, ngMessages])
   .config(routing)
+  .run(titleChange)
   .service('usersListService', usersListService)
   .directive('uniqueEmail', uniqueEmail)
   .directive('uniqueUsername', uniqueUsername)

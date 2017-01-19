@@ -85,7 +85,7 @@ angular-ui-router@next:
   version "1.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/angular-ui-router/-/angular-ui-router-1.0.0-beta.3.tgz#18d5b4af4662cdc282d1e1d7df29cb7085df9d28"
 
-angular@1.5:
+angular@1.5.9:
   version "1.5.9"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.5.9.tgz#b7aeff42dad87881e06be16b6690fe766d868b51"
 

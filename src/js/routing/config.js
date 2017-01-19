@@ -7,19 +7,31 @@ export default function routing($stateProvider, $urlRouterProvider, $locationPro
   $stateProvider
     .state('home', {
       url: '/',
-      component: 'home'
+      component: 'home',
+      data: {
+        title: 'Home | UsersManager'
+      }
     })
     .state('about', {
       url: '/about',
-      component: 'about'
+      component: 'about',
+      data: {
+        title: 'About author | UsersManager'
+      }
     })
     .state('editUser', {
       url: '/edit-user',
-      component: 'editUser'
+      component: 'editUser',
+      data: {
+        title: 'Add new user | UsersManager'
+      }
     })
     .state('edit', {
       url: '/{userId}',
       component: 'editUser',
+      data: {
+        title: 'Edit user\'s data | UsersManager'
+      },
       resolve: {
         editedUser: (usersListService, $stateParams, $location) => usersListService.users.filter(x => x.id === Number($stateParams.userId))[0]
       }
