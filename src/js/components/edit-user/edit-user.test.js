@@ -69,8 +69,8 @@ describe('<edit-user> component', () => {
   }))
 
   it('Should render text', () => {
-    const header = findIn(element, 'h3.text-center')
-    expect(header.text()).toBe('Add new User')
+    const header = findIn(element, 'a.btn.btn-warning.text-uppercase')
+    expect(header.text()).toBe('Cancel')
   })
 
   // --- TESTING CONTROLLER ---
