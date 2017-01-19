@@ -1,3 +1,10 @@
+/**
+ * routing - function that configure routing of app
+ *
+ * @param  {object} $stateProvider ng
+ * @param  {object} $urlRouterProvider ng
+ * @param  {object} $locationProvider ng
+ */
 export default function routing($stateProvider, $urlRouterProvider, $locationProvider) {
   'ngInject'
   // html5 mode commented out, because i want serve this app on gh-pages, which not support this option yet.

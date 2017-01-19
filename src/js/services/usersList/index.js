@@ -13,7 +13,7 @@ export default class usersListService {
   }
 
   /**
-   * get users array in json from url
+   * getUsers - method get users array in json from url
    *
    * @param  {object} $http
    */
@@ -25,7 +25,7 @@ export default class usersListService {
   }
 
   /**
-   * delete user obj from array
+   * deleteUser - method to delete user obj from array
    *
    * @param  {Number} id
    */
@@ -34,7 +34,7 @@ export default class usersListService {
   }
 
   /**
-   * function create Id to new User
+   * getId - method create Id to new User
    *
    * @returns  {string}
    */
@@ -43,7 +43,7 @@ export default class usersListService {
   }
 
   /**
-   * addUser - function to add new user to array, immutable way with spread operator
+   * addUser - method to add new user to array, immutable way with spread operator
    *
    * @param  {object} obj New user obect
    */
@@ -52,6 +52,8 @@ export default class usersListService {
   }
 
   /**
+   * uniqueValue - method that check if entered value is unique amoung of chosen property of all users
+   *
    * @param  {string} prop
    * @param  {any} val
    * @returns  {boolean}
