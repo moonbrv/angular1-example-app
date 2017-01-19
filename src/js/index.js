@@ -6,7 +6,6 @@ import ngMessages from 'angular-messages'
 // import routing config
 import routing from './routing/config.js'
 import titleChange from './routing/pageTitle.js'
-// import uiRouterTitle from 'angular-ui-router-title'
 
 // import service
 import usersListService from './services/usersList'
