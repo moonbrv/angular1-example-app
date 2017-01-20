@@ -47,10 +47,10 @@ describe('<home> component', () => {
     ctrl = element.controller('home')
   }))
 
-  it('Should render text', () => {
-    const header = findIn(element, '.filter-form__header')
-    expect(header.text()).toBe('User\'s filters')
-  })
+  // it('Should render text', () => {
+  //   const header = findIn(element, '.filter-form__header')
+  //   expect(header.text()).toBe('User\'s filters')
+  // })
 
   // --- TESTING CONTROLLER ---
   describe('Testing Controller of component', () => {

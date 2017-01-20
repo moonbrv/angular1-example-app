@@ -1,16 +1,18 @@
+import {NgTableParams} from 'ng-table'
+
 /**
  * this class is controller of <home> component
  *
  * @export
  * @class homeCtrl
  */
-
 export default class homeCtrl {
   constructor(usersListService) {
     'ngInject'
     this.usersListService = usersListService
     this.sortType = 'name'
     this.sortReverse = false
+    this.tableParams = new NgTableParams({}, {dataset: this.usersListService.users})
   }
 
   /**
