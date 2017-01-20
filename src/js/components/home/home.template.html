@@ -1,3 +1,6 @@
+<h2 class="text-center">User's Manager</h2>
+<p class="help-block text-center">You can filter users by input some text in forms inside colums below.</p>
+
 <table ng-table="$ctrl.tableParams" show-filter="true" class="table table-condensed table-bordered">
   <tr ng-repeat="user in $data">
     <td data-title="'Name'" header-class="'text-left'" sortable="'name'" filter="{'name' : 'text'}">
@@ -22,7 +25,13 @@
     <td data-title="'Company'" header-class="'text-left'" sortable="'company.name'" filter="{'company.name' : 'text'}">
       {{user.company.name}}
     </td>
-
+    <td data-title="'Edit'" header-class="'text-left'">
+      <a ui-sref="edit({userId: user.id})" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </a>
+      <a ng-click="$ctrl.removeUser(user.id)" class="btn btn-danger btn-sm">
+        <span class="glyphicon glyphicon-trash"></span>
+      </a>
+    </td>
   </tr>
-
 </table>

@@ -9,10 +9,10 @@ import {NgTableParams} from 'ng-table'
 export default class homeCtrl {
   constructor(usersListService) {
     'ngInject'
-    this.usersListService = usersListService
+    this.users = usersListService.users
     this.sortType = 'name'
     this.sortReverse = false
-    this.tableParams = new NgTableParams({}, {dataset: this.usersListService.users})
+    this.tableParams = new NgTableParams({}, {dataset: this.users})
   }
 
   /**
@@ -44,5 +44,10 @@ export default class homeCtrl {
    */
   setShow(type) {
     return this.sortType === type
+  }
+
+  removeUser(id) {
+    this.tableParams.settings().dataset = this.tableParams.settings().dataset.filter(x => x.id !== id)
+    this.tableParams.reload()
   }
 }
