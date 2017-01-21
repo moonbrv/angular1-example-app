@@ -12,7 +12,11 @@ export default class homeCtrl {
     this.usersListService = usersListService
     this.sortType = 'name'
     this.sortReverse = false
-    this.tableParams = new NgTableParams({}, {
+    this.tableParams = new NgTableParams({
+      count: 5
+    },
+    {
+      counts: [5, 10, 15],
       dataset: this.usersListService.users
     })
     // to catch changes in data and update table
