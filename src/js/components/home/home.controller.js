@@ -55,7 +55,12 @@ export default class homeCtrl {
   setShow(type) {
     return this.sortType === type
   }
-
+  /**
+   * function remove user with chosen id from data in service,
+   * and sync table with data in service
+   *
+   * @param  {number} id
+   */
   removeUser(id) {
     this.usersListService.deleteUser(id)
     this.tableParams.settings().dataset = this.usersListService.users
