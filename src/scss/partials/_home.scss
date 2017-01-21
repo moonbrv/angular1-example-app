@@ -26,3 +26,14 @@ div.ng-table-counts.btn-group {
     margin: 10px 0;
   }
 }
+
+//update loader styles
+.ball-spin-fade-loader > div {
+  background: $brand-primary;
+}
+
+.table-loader {
+  position: absolute;
+  left: 50%;
+  padding-top: 100px;
+}
