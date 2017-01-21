@@ -18,8 +18,10 @@ export default class homeCtrl {
     // to catch changes in data and update table
     this.timeout = $timeout
     this.timeout(() => {
-      this.tableParams.settings().dataset = this.usersListService.users
-      this.tableParams.reload()
+      if (this.tableParams.settings().dataset !== this.usersListService.users) {
+        this.tableParams.settings().dataset = this.usersListService.users
+        this.tableParams.reload()
+      }
     }, 200)
   }
 
