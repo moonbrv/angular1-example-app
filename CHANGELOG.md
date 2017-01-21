@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.3.1
+  - Increase initial table update time to 2 sec
+
 ## v1.3
   - Add spinner when data loading
   - Fix bug with table updating
