@@ -17,10 +17,11 @@ span.required {
   padding: 0;
 
   @media (min-width: 768px) {
-    padding: 0 15px 0 5px;
+    padding: 0 5px 0 10px;
   }
 
   @media (min-width: 992px) {
-    padding-right: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }
