@@ -48,8 +48,8 @@ describe('<home> component', () => {
   }))
 
   it('Should render text', () => {
-    const header = findIn(element, '.filter-form__header')
-    expect(header.text()).toBe('User\'s filters')
+    const header = findIn(element, 'h2.text-center')
+    expect(header.text()).toBe('User\'s Manager')
   })
 
   // --- TESTING CONTROLLER ---
@@ -63,44 +63,17 @@ describe('<home> component', () => {
       expect(ctrl.usersListService).toEqual(usersListService)
     })
 
-    it('default sortType must be \'name\'', () => {
-      expect(ctrl.sortType).toBe('name')
-    })
-
-    it('default reverse order must be \'false\'', () => {
-      expect(ctrl.sortReverse).toBe(false)
-    })
-
-    it('must save sort type(\'name\') and set reverse order to \'true\'', () => {
-      ctrl.setOrder('name')
-      expect(ctrl.sortType).toBe('name')
-      expect(ctrl.sortReverse).toBe(true)
-    })
-
-    it('must set sort type to \'username\' and set reverse order to \'false\'', () => {
-      ctrl.setOrder('username')
-      expect(ctrl.sortType).toBe('username')
-      expect(ctrl.sortReverse).toBe(false)
-    })
-
-    it('default class icon must be triangle down', () => {
-      // default sortReverse 'false'
-      expect(ctrl.setIcon()).toBe('glyphicon glyphicon-triangle-bottom')
-    })
-
-    it('after setOrder by \'name\' icon must be triangle up', () => {
-      // default sortReverse 'false'
-      ctrl.setOrder('name')
-      expect(ctrl.setIcon()).toBe('glyphicon glyphicon-triangle-top')
-    })
-
-    it('must show icon for \'name\' column', () => {
-      expect(ctrl.setShow('name')).toBe(true)
-    })
-
-    it('must hide icon for \'username\' and \'email\' columns(and for all other...)', () => {
-      expect(ctrl.setShow('username')).toBe(false)
-      expect(ctrl.setShow('email')).toBe(false)
+    it('Method: removeUser - must remove user from service and table', () => {
+      let rows = angular.element(element[0].querySelectorAll('tbody tr'))
+      expect(rows['length']).toBe(2)
+      expect(ctrl.tableParams.settings().dataset.length).toBe(2)
+      expect(ctrl.usersListService.users.length).toBe(2)
+      ctrl.removeUser(1)
+      scope.$apply()
+      rows = angular.element(element[0].querySelectorAll('tbody tr'))
+      expect(ctrl.tableParams.settings().dataset.length).toBe(1)
+      expect(rows['length']).toBe(1)
+      expect(ctrl.usersListService.users.length).toBe(1)
     })
 
   })
