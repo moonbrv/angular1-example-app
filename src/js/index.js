@@ -2,6 +2,7 @@ import 'jquery/dist/jquery.slim.js'
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
 import ngMessages from 'angular-messages'
+import {ngTableModule} from 'ng-table'
 
 // import routing config
 import routing from './routing/config.js'
@@ -31,7 +32,7 @@ import './../scss/style.scss'
 import './../img/github.svg'
 
 // create angular module
-angular.module('app', [uiRouter, ngMessages])
+angular.module('app', [uiRouter, ngMessages, ngTableModule.name])
   .config(routing)
   .run(titleChange)
   .service('usersListService', usersListService)

@@ -1,16 +1,32 @@
+import {NgTableParams} from 'ng-table'
+
 /**
  * this class is controller of <home> component
  *
  * @export
  * @class homeCtrl
  */
-
 export default class homeCtrl {
-  constructor(usersListService) {
+  constructor(usersListService, $timeout) {
     'ngInject'
     this.usersListService = usersListService
     this.sortType = 'name'
     this.sortReverse = false
+    this.tableParams = new NgTableParams({
+      count: 5
+    },
+    {
+      counts: [5, 10, 15],
+      dataset: this.usersListService.users
+    })
+    // to catch changes in data and update table
+    this.timeout = $timeout
+    this.timeout(() => {
+      if (this.tableParams.settings().dataset !== this.usersListService.users) {
+        this.tableParams.settings().dataset = this.usersListService.users
+        this.tableParams.reload()
+      }
+    }, 200)
   }
 
   /**
@@ -42,5 +58,16 @@ export default class homeCtrl {
    */
   setShow(type) {
     return this.sortType === type
+  }
+  /**
+   * function remove user with chosen id from data in service,
+   * and sync table with data in service
+   *
+   * @param  {number} id
+   */
+  removeUser(id) {
+    this.usersListService.deleteUser(id)
+    this.tableParams.settings().dataset = this.usersListService.users
+    this.tableParams.reload()
   }
 }
