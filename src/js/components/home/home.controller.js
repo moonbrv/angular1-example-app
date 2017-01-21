@@ -26,7 +26,7 @@ export default class homeCtrl {
         this.tableParams.reload()
         this.updated = true
       }
-    }, 1000)
+    }, 2000)
   }
 
   /**
