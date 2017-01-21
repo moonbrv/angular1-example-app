@@ -1,7 +1,20 @@
 <h2 class="text-center">User's Manager</h2>
 <p class="help-block text-center">You can filter users by input some text in forms inside colums below.</p>
 
-<div class="table-responsive">
+<div class="table-loader" ng-hide="$ctrl.updated">
+  <div class="ball-spin-fade-loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div class="table-responsive" ng-show="$ctrl.updated">
   <table ng-table="$ctrl.tableParams" show-filter="true" class="table table-condensed table-bordered table-striped">
     <tr ng-repeat="user in $data">
       <td data-title="'Name'" header-class="'text-left'" sortable="'name'" filter="{'name' : 'text'}">

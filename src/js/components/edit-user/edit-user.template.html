@@ -35,7 +35,7 @@
   <h3 class="text-center" ng-switch-when="/edit-user">Add new User</h3>
   <h3 class="text-center" ng-switch-default>Edit User's data</h3>
   <div class="row">
-    <div class="col-xs-12 col-sm-offset-2 col-sm-4">
+    <div class="col-xs-12 col-sm-offset-4 col-sm-4">
       <p><span class="required">*</span> - required field</p>
     </div>
   </div>
@@ -44,7 +44,7 @@
     'has-error': editUserForm.name.$dirty && editUserForm.name.$invalid,
     'has-success': editUserForm.name.$dirty && editUserForm.name.$valid
     }">
-    <label for="addInputName" class="col-sm-2 control-label">Name <span class="required">*</span></label>
+    <label for="addInputName" class="col-sm-offset-2 col-sm-2 control-label">Name <span class="required">*</span></label>
     <div class="col-sm-6 col-md-4">
       <input type="text" class="form-control" id="addInputName" placeholder="Name" ng-model="user.name" name="name" required minlength="3">
       <div ng-messages="editUserForm.name.$error" role="alert" ng-show="editUserForm.name.$dirty">
@@ -57,7 +57,7 @@
     'has-error': editUserForm.username.$dirty && editUserForm.username.$invalid,
     'has-success': editUserForm.username.$dirty && editUserForm.username.$valid
     }">
-    <label for="addInputUserame" class="col-sm-2 control-label">Username <span class="required">*</span></label>
+    <label for="addInputUserame" class="col-sm-offset-2 col-sm-2 control-label">Username <span class="required">*</span></label>
     <div class="col-sm-6 col-md-4">
       <input type="text" class="form-control" id="addInputUserame" placeholder="Username" ng-model="user.username" name="username" required minlength="3" unique-username>
       <div ng-messages="editUserForm.username.$error" role="alert" ng-show="editUserForm.username.$dirty">
@@ -70,7 +70,7 @@
     'has-error': editUserForm.email.$dirty && editUserForm.email.$invalid,
     'has-success': editUserForm.email.$dirty && editUserForm.email.$valid
     }">
-    <label for="addInputEmail" class="col-sm-2 control-label">Email <span class="required">*</span></label>
+    <label for="addInputEmail" class="col-sm-offset-2 col-sm-2 control-label">Email <span class="required">*</span></label>
     <div class="col-sm-6 col-md-4">
       <input type="email" class="form-control" id="addInputEmail" placeholder="Email" ng-model="user.email" name="email" required minlength="3" unique-email>
       <div ng-messages="editUserForm.email.$error" role="alert" ng-show="editUserForm.email.$dirty">
@@ -82,7 +82,7 @@
     'has-error': editUserForm.city.$dirty && editUserForm.city.$invalid,
     'has-success': editUserForm.city.$dirty && editUserForm.city.$valid && editUserForm.city.$modelValue
     }">
-    <label for="addInputCity" class="col-sm-2 control-label">City</label>
+    <label for="addInputCity" class="col-sm-offset-2 col-sm-2 control-label">City</label>
     <div class="col-sm-6 col-md-4">
       <input type="text" class="form-control" id="addInputCity" placeholder="City" ng-model="user.address.city" name="city">
     </div>
@@ -91,7 +91,7 @@
     'has-error': editUserForm.street.$dirty && editUserForm.street.$invalid,
     'has-success': editUserForm.street.$dirty && editUserForm.street.$valid && editUserForm.street.$modelValue
     }">
-    <label for="addInputStreet" class="col-sm-2 control-label">Street</label>
+    <label for="addInputStreet" class="col-sm-offset-2 col-sm-2 control-label">Street</label>
     <div class="col-sm-6 col-md-4">
       <input type="text" class="form-control" id="addInputStreet" placeholder="Street" ng-model="user.address.street" name="street">
     </div>
@@ -100,7 +100,7 @@
     'has-error': editUserForm.suite.$dirty && editUserForm.suite.$invalid,
     'has-success': editUserForm.suite.$dirty && editUserForm.suite.$valid && editUserForm.suite.$modelValue
     }">
-    <label for="addInputSuite" class="col-sm-2 control-label">Suite</label>
+    <label for="addInputSuite" class="col-sm-offset-2 col-sm-2 control-label">Suite</label>
     <div class="col-sm-6 col-md-4">
       <input type="text" class="form-control" id="addInputSuite" placeholder="Suite" ng-model="user.address.suite" name="suite">
     </div>
@@ -109,7 +109,7 @@
     'has-error': editUserForm.zipcode.$dirty && editUserForm.zipcode.$invalid,
     'has-success': editUserForm.zipcode.$dirty && editUserForm.zipcode.$valid && editUserForm.zipcode.$modelValue
     }">
-    <label for="addInputZipcode" class="col-sm-2 control-label">Zipcode</label>
+    <label for="addInputZipcode" class="col-sm-offset-2 col-sm-2 control-label">Zipcode</label>
     <div class="col-sm-6 col-md-4">
       <input type="text" class="form-control" id="addInputZipcode" placeholder="Zipcode" ng-model="user.address.zipcode" name="zipcode">
     </div>
@@ -118,7 +118,7 @@
     'has-error': editUserForm.phone.$dirty && editUserForm.phone.$invalid,
     'has-success': editUserForm.phone.$dirty && editUserForm.phone.$valid && editUserForm.phone.$modelValue
     }">
-    <label for="addInputPhone" class="col-sm-2 control-label">Phone</label>
+    <label for="addInputPhone" class="col-sm-offset-2 col-sm-2 control-label">Phone</label>
     <div class="col-sm-6 col-md-4">
       <input type="text" class="form-control" id="addInputPhone" placeholder="Phone" ng-model="user.phone" name="phone">
     </div>
@@ -127,7 +127,7 @@
     'has-error': editUserForm.website.$dirty && editUserForm.website.$invalid,
     'has-success': editUserForm.website.$dirty && editUserForm.website.$valid && editUserForm.website.$modelValue
     }">
-    <label for="addInputWebsite" class="col-sm-2 control-label">Website</label>
+    <label for="addInputWebsite" class="col-sm-offset-2 col-sm-2 control-label">Website</label>
     <div class="col-sm-6 col-md-4">
       <input type="text" class="form-control" id="addInputWebsite" placeholder="Website URL" ng-model="user.website" name="website">
     </div>
@@ -136,12 +136,12 @@
     'has-error': editUserForm.company.$dirty && editUserForm.company.$invalid,
     'has-success': editUserForm.company.$dirty && editUserForm.company.$valid && editUserForm.company.$modelValue
     }">
-    <label for="addInputCompany" class="col-sm-2 control-label">Company</label>
+    <label for="addInputCompany" class="col-sm-offset-2 col-sm-2 control-label">Company</label>
     <div class="col-sm-6 col-md-4">
       <input type="text" class="form-control" id="addInputCompany" placeholder="Company name" ng-model="user.company.name" name="company">
     </div>
   </div>
-    <div class="col-sm-offset-2 col-sm-6 col-md-4 buttons-wrapper">
+    <div class="col-sm-offset-4 col-sm-6 col-md-4 buttons-wrapper">
       <a ui-sref="home" class="btn btn-warning text-uppercase">Cancel</a>
       <button ng-switch-when="/edit-user" type="submit" class="btn btn-success text-uppercase pull-right" ng-disabled="editUserForm.$invalid || editUserForm.$pristine">Add user</button>
       <a ng-switch-default ui-sref="home" class="btn btn-success text-uppercase pull-right" ng-click="$ctrl.changeUser(user)" ng-disabled="editUserForm.$invalid || editUserForm.$pristine">Save</a>
