@@ -1,37 +1,39 @@
 <h2 class="text-center">User's Manager</h2>
 <p class="help-block text-center">You can filter users by input some text in forms inside colums below.</p>
 
-<table ng-table="$ctrl.tableParams" show-filter="true" class="table table-condensed table-bordered">
-  <tr ng-repeat="user in $data">
-    <td data-title="'Name'" header-class="'text-left'" sortable="'name'" filter="{'name' : 'text'}">
-      {{user.name}}
-    </td>
-    <td data-title="'Username'" header-class="'text-left'" sortable="'username'" filter="{'username' : 'text'}">
-      {{user.username}}
-    </td>
-    <td data-title="'Email'" header-class="'text-left'" sortable="'email'" filter="{'email' : 'text'}">
-      <a href="mailto:{{user.email}}">
-        {{user.email}}
-      </a>
-    </td>
-    <td data-title="'Address'" header-class="'text-left'" sortable="'address.city'" filter="{'address.city' : 'text'}">
-      <address>
-        {{user.address.city}}<br>
-        {{user.address.zipcode}}<br>
-        {{user.address.street}}<br>
-        {{user.address.suite}}
-      </address>
-    </td>
-    <td data-title="'Company'" header-class="'text-left'" sortable="'company.name'" filter="{'company.name' : 'text'}">
-      {{user.company.name}}
-    </td>
-    <td data-title="'Edit'" header-class="'text-left'">
-      <a ui-sref="edit({userId: user.id})" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-pencil"></span>
-      </a>
-      <a ng-click="$ctrl.removeUser(user.id)" class="btn btn-danger btn-sm">
-        <span class="glyphicon glyphicon-trash"></span>
-      </a>
-    </td>
-  </tr>
-</table>
+<div class="table-responsive">
+  <table ng-table="$ctrl.tableParams" show-filter="true" class="table table-condensed table-bordered table-striped">
+    <tr ng-repeat="user in $data">
+      <td data-title="'Name'" header-class="'text-left'" sortable="'name'" filter="{'name' : 'text'}">
+        {{user.name}}
+      </td>
+      <td data-title="'Username'" header-class="'text-left'" sortable="'username'" filter="{'username' : 'text'}">
+        {{user.username}}
+      </td>
+      <td data-title="'Email'" header-class="'text-left'" sortable="'email'" filter="{'email' : 'text'}">
+        <a href="mailto:{{user.email}}">
+          {{user.email}}
+        </a>
+      </td>
+      <td data-title="'Address'" header-class="'text-left'" sortable="'address.city'" filter="{'address.city' : 'text'}">
+        <address>
+          City: {{user.address.city}}<br>
+          Zip: {{user.address.zipcode}}<br>
+          Street: {{user.address.street}}<br>
+          Suite: {{user.address.suite}}
+        </address>
+      </td>
+      <td data-title="'Company'" header-class="'text-left'" sortable="'company.name'" filter="{'company.name' : 'text'}">
+        {{user.company.name}}
+      </td>
+      <td data-title="'Edit'" header-class="'text-left'">
+        <a ui-sref="edit({userId: user.id})" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </a>
+        <a ng-click="$ctrl.removeUser(user.id)" class="btn btn-danger btn-sm">
+          <span class="glyphicon glyphicon-trash"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
