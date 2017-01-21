@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v1.3
+  - Add spinner when data loading
+  - Fix bug with table updating
+  - Edit stylesheets
+
 ## v1.2
   - Table in <home> component created with pagination via ng-table
   - Filter and sorting using ng-table directives
