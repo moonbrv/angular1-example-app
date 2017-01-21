@@ -22,7 +22,7 @@ module.exports = {
 
   entry:
   {
-    vendor: ['angular', 'angular-ui-router', 'jquery/dist/jquery.slim.js', 'angular-messages'],
+    vendor: ['angular', 'angular-ui-router', 'angular-messages'],
     main: path.join(__dirname, '/src/js/index.js')
   },
 
