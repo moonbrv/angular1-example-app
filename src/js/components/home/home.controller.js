@@ -7,12 +7,20 @@ import {NgTableParams} from 'ng-table'
  * @class homeCtrl
  */
 export default class homeCtrl {
-  constructor(usersListService) {
+  constructor(usersListService, $timeout) {
     'ngInject'
     this.usersListService = usersListService
     this.sortType = 'name'
     this.sortReverse = false
-    this.tableParams = new NgTableParams({}, {dataset: this.usersListService.users})
+    this.tableParams = new NgTableParams({}, {
+      dataset: this.usersListService.users
+    })
+    // to catch changes in data and update table
+    this.timeout = $timeout
+    this.timeout(() => {
+      this.tableParams.settings().dataset = this.usersListService.users
+      this.tableParams.reload()
+    }, 200)
   }
 
   /**
