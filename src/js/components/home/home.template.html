@@ -15,25 +15,25 @@
 </div>
 
 <div class="table-responsive" ng-show="$ctrl.updated">
-  <table ng-table="$ctrl.tableParams" show-filter="true" class="table table-condensed table-bordered table-striped">
+  <table ng-table="::$ctrl.tableParams" show-filter="true" class="table table-condensed table-bordered table-striped">
     <tr ng-repeat="user in $data">
       <td data-title="'Name'" header-class="'text-left'" sortable="'name'" filter="{'name' : 'text'}">
-        {{user.name}}
+        {{::user.name}}
       </td>
       <td data-title="'Username'" header-class="'text-left'" sortable="'username'" filter="{'username' : 'text'}">
-        {{user.username}}
+        {{::user.username}}
       </td>
       <td data-title="'Email'" header-class="'text-left'" sortable="'email'" filter="{'email' : 'text'}">
         <a href="mailto:{{user.email}}">
-          {{user.email}}
+          {{::user.email}}
         </a>
       </td>
       <td data-title="'Address'" header-class="'text-left'" sortable="'address.city'" filter="{'address.city' : 'text'}">
         <address>
-          City: {{user.address.city}}<br>
-          Zip: {{user.address.zipcode}}<br>
-          Street: {{user.address.street}}<br>
-          Suite: {{user.address.suite}}
+          City: {{::user.address.city}}<br>
+          Zip: {{::user.address.zipcode}}<br>
+          Street: {{::user.address.street}}<br>
+          Suite: {{::user.address.suite}}
         </address>
       </td>
       <td data-title="'Company'" header-class="'text-left'" sortable="'company.name'" filter="{'company.name' : 'text'}">
@@ -43,7 +43,7 @@
         <a ui-sref="edit({userId: user.id})" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-pencil"></span>
         </a>
-        <a ng-click="$ctrl.removeUser(user.id)" class="btn btn-danger btn-sm">
+        <a ng-click="::$ctrl.removeUser(user.id)" class="btn btn-danger btn-sm">
           <span class="glyphicon glyphicon-trash"></span>
         </a>
       </td>
