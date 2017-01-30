@@ -4,5 +4,5 @@
  */
 
 import UniqueEmail from './uniqueUsername.class'
-
+/* @ngInject */
 export default (usersListService) => new UniqueEmail(usersListService)
