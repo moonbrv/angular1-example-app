@@ -3,6 +3,6 @@
  * for <any unique-username></any> directive
  */
 
-import UniqueEmail from './uniqueUsername.class'
+import UniqueUsername from './uniqueUsername.class'
 /* @ngInject */
-export default (usersListService) => new UniqueEmail(usersListService)
+export default (usersListService) => new UniqueUsername(usersListService)
