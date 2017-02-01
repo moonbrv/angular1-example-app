@@ -17,7 +17,7 @@ describe('<home> component', () => {
   let scope, element, ctrl, $httpBackend, usersListService
 
   function findIn(element, selector) {
-    return angular.element(element[0].querySelector(selector));
+    return angular.element(element[0].querySelector(selector))
   }
 
   // inject service because ctrl use it
@@ -27,16 +27,13 @@ describe('<home> component', () => {
     $httpBackend
       .when('GET', 'https://jsonplaceholder.typicode.com/users')
       .respond(responseData)
-
     usersListService = _usersListService_
-
     $httpBackend.flush()
-
   }))
 
   afterEach(() => {
-    $httpBackend.verifyNoOutstandingExpectation();
-    $httpBackend.verifyNoOutstandingRequest();
+    $httpBackend.verifyNoOutstandingExpectation()
+    $httpBackend.verifyNoOutstandingRequest()
   })
 
   beforeEach(inject((_$rootScope_, _$compile_) => {
@@ -54,28 +51,25 @@ describe('<home> component', () => {
 
   // --- TESTING CONTROLLER ---
   describe('Testing Controller of component', () => {
-
     it('controller must be defined', () => {
       expect(ctrl).toBeDefined()
     })
 
     it('must inject service', () => {
-      expect(ctrl.usersListService).toEqual(usersListService)
+      expect(ctrl.scope.usersListService).toEqual(usersListService)
     })
 
     it('Method: removeUser - must remove user from service and table', () => {
       let rows = angular.element(element[0].querySelectorAll('tbody tr'))
       expect(rows['length']).toBe(2)
       expect(ctrl.tableParams.settings().dataset.length).toBe(2)
-      expect(ctrl.usersListService.users.length).toBe(2)
+      expect(ctrl.scope.usersListService.users.length).toBe(2)
       ctrl.removeUser(1)
       scope.$apply()
       rows = angular.element(element[0].querySelectorAll('tbody tr'))
       expect(ctrl.tableParams.settings().dataset.length).toBe(1)
       expect(rows['length']).toBe(1)
-      expect(ctrl.usersListService.users.length).toBe(1)
+      expect(ctrl.scope.usersListService.users.length).toBe(1)
     })
-
   })
-
 })
