@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v1.3.3
+  - Add watching for changes in data, and auto refresh table
+
+## v1.3.2
+  - Change to oneway bindings in the table
+  - Fixed error with unannotated directives
+
 ## v1.3.1
   - Increase initial table update time to 2 sec
 

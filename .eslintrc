@@ -10,8 +10,7 @@
   "globals": {
     "__DEV__": false,
     "__TEST__": false,
-    "$window": true,
-    "$document": true
+    "inject": false
   },
   "env": {
     "browser": true,

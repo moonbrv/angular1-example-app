@@ -1,4 +1,5 @@
 import {NgTableParams} from 'ng-table'
+// import debounce from 'lodash.debounce'
 
 /**
  * this class is controller of <home> component
@@ -7,26 +8,32 @@ import {NgTableParams} from 'ng-table'
  * @class homeCtrl
  */
 export default class homeCtrl {
-  constructor(usersListService, $timeout) {
+  constructor(usersListService, $scope) {
     'ngInject'
-    this.usersListService = usersListService
+    this.scope = $scope
+    this.scope.usersListService = usersListService
     this.tableParams = new NgTableParams({
       count: 5
     },
     {
       counts: [5, 10, 15],
-      dataset: this.usersListService.users
+      dataset: this.scope.usersListService.users
     })
+
     // to catch changes in data and update table
-    this.updated = !!this.tableParams.settings().dataset.length
-    this.timeout = $timeout
-    this.timeout(() => {
-      if (this.tableParams.settings().dataset !== this.usersListService.users) {
-        this.tableParams.settings().dataset = this.usersListService.users
-        this.tableParams.reload()
-        this.updated = true
-      }
-    }, 2000)
+    this.updated = this.tableParams.settings().dataset.length
+    this.scope.$watch('usersListService.users', this.updateTable.bind(this))
+  }
+
+  /**
+   * function check and update table data if need
+   */
+  updateTable() {
+    if (this.tableParams.settings().dataset !== this.scope.usersListService.users) {
+      this.tableParams.settings().dataset = this.scope.usersListService.users
+      this.updated = true
+      this.tableParams.reload()
+    }
   }
 
   /**
@@ -36,8 +43,8 @@ export default class homeCtrl {
    * @param  {number} id
    */
   removeUser(id) {
-    this.usersListService.deleteUser(id)
-    this.tableParams.settings().dataset = this.usersListService.users
+    this.scope.usersListService.deleteUser(id)
+    this.tableParams.settings().dataset = this.scope.usersListService.users
     this.tableParams.reload()
   }
 }
